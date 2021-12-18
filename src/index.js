@@ -1,17 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Authentication from './components/Authentication';
+import NavBar from './components/NavBar';
+import SearchBar from './components/SearchBar';
+import SearchResult from './components/SearchResult';
+import JobDetail from './components/JobDetail';
+import JobForm from './components/JobForm';
+import FavList from './components/FavList';
+import { isLoggedInReducer } from './redux/isLoggedIn';
+const store = createStore(isLoggedInReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<SearchBar />} />
+        <Route path='/login' element={<Authentication mode='login' />} />
+        <Route path='/register' element={<Authentication mode='register' />} />
+        <Route path='/searchResult/:keyword' element={<SearchResult />} />
+        <Route path='/jobDetail/:id' element={<JobDetail />} />
+        <Route path='/postJob' element={<JobForm />} />
+        <Route path='/updateJob/:id' element={<JobForm />} />
+        <Route path='/myFav' element={<FavList />} />
+      </Routes>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

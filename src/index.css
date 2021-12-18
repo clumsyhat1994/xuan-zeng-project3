@@ -5,9 +5,301 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightgray;
+  position: relative;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root{
+  position: relative;
+  font-size: 30px;
+}
+
+
+
+*{
+  box-sizing: border-box;
+}
+
+.error{
+  color: crimson;
+}
+#authentication{
+  position: absolute;
+  left: 50%;
+  top: 180px;
+  transform: translate(-50%);
+  padding: 2%;
+  padding-bottom: 5%;
+  background-color: white;
+  width: fit-content;
+  height: fit-content;
+  font-size: inherit;
+}
+
+#authentication label,
+#authentication input{
+  display: block;
+  margin-bottom: 10px;
+  width: 300px;
+  font-size: inherit;
+}
+
+#authentication input{
+  border-radius: 5px;
+}
+
+#authentication button{
+  width: 300px;
+  font-size: inherit;
+  border: lightgray solid 1px;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  margin-top: 20px;
+  padding: 2%;
+}
+
+#authentication button:hover{
+  transform: translate(0,-5%);
+  cursor: pointer;
+}
+
+#authentication button:active{
+  transform: translateY(4px);
+}
+
+
+#authentication #errMsg{
+  color: crimson;
+  font-size: 20px;
+}
+
+
+
+
+#navBar{
+  height: 85px;
+  border-bottom: solid dimgray 3px;
+}
+
+#navBar span{
+  position: relative;
+  font-size: 30px;
+  display: inline-block;
+  top: 16px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+#navBar button{
+  float: right;
+  box-sizing: border-box;
+  height: 80px;
+  font-size: inherit;
+  margin-right: 10px;
+  border: none;
+  background-color: lightgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+
+#navBar #home{
+  margin-left: 20px;
+  float: left;
+}
+
+#navBar button:hover{
+  border-bottom: black 5px solid;
+}
+
+h1{
+  position: relative;
+  top: 150px;
+  left: 50%;
+  width: fit-content;
+  transform: translate(-50%);
+}
+
+#searchBar{
+  position: relative;
+  top: 200px;
+  padding: 0;
+
+}
+
+#searchBar input,
+#searchBar button{
+  position: relative;
+  border: none;
+  outline: none;
+  padding: 0;
+  left: 50%;
+  transform: translate(-55%);
+  background-color: white;
+  height: 50px;
+  font-size: 20px;
+}
+
+#searchBar input{
+  width: 550px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+#searchBar button{
+  background-color: black;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  transform: translate(-290%);
+}
+
+#searchBar button:hover{
+  background-color: dimgray;
+}
+
+
+#searchBar button:active{
+  background-color: black;
+}
+
+
+
+#searchResults{
+  position: relative;
+  top: 50px;
+}
+
+.snippet{
+  position: relative;
+  width: 600px;
+  left: 50%;
+  transform: translate(-50%);
+  border: black 2px solid;
+  border-radius: 5px;
+  margin-top: 30px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.snippet:hover{
+  background-color: darkgray;
+}
+
+.snippet:hover strong{
+  border-bottom: solid 3px black;
+}
+
+
+#detail{
+  width: 700px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  top: 50px;
+}
+
+
+#like{
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+#detail .default,
+#detail .unliked{
+  color: black;
+  background-color: white;
+}
+
+#detail button{
+  cursor: pointer;
+}
+
+#detail .liked{
+  color: white;
+  background-color: dimgray;
+}
+
+#detail #like:hover{
+  color: white;
+  background-color: black;
+}
+
+#detail strong{
+  font-size: 30px;
+}
+
+#detail div,
+#detail a{
+  font-size: 20px;
+}
+#detail a{
+  position: relative;
+  display: block;
+  color: black;
+}
+#detail p{
+  word-wrap: break-word;
+  font-size: 25px;
+  text-align: justify;
+}
+
+#job_form{
+  position: relative;
+  top: 20px;
+  width: 40%;
+  left: 50%;
+  transform: translate(-50%);
+  padding-bottom: 80px;
+}
+
+#job_form input,
+#job_form label,
+textarea{
+  width: 100%;
+  display: block;
+  font-size: 20px;
+  
+  background-color: lightgray;
+}
+
+#job_form label{
+  margin-bottom: 5px;
+}
+
+#job_form input{
+  margin-bottom: 10px;
+  border: solid black 2px;
+}
+
+textarea{
+  height: 400px;
+  resize: none;
+  border: solid black 2px;
+}
+
+#job_form button{
+  font-size: 20px;
+  background-color: lightgray;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#job_form button:hover{
+  background-color: dimgray;
+}
+
+#job_form button:active{
+  background-color: black;
+  color: white;
 }
