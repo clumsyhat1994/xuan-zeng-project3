@@ -45,7 +45,7 @@ router.post('/post', authentication, function (req, res) {
     req.body = { ...req.body, creator: req.username }
     //console.log(req.body);
     JobFunctions.createJob(req.body)
-        .then(result => res.status(200).send(result))
+        .then(result => res.status(200).send(result._id))
         .catch(err => res.status(400).send(err));
 })
 
