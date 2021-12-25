@@ -2,6 +2,9 @@
   "name": "xuan-zeng-project3",
   "proxy": "http://localhost:8000/",
   "version": "0.1.0",
+   "engines": {
+    "node": "v14.18.1"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
