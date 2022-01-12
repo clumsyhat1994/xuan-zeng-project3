@@ -58,7 +58,6 @@ export default function () {
             <button id="home" onClick={() => navigate('/')}>HOME</button>
             <span>{username}</span>
             {buttons}
-            {isLoggedInBtn}
             <button id="post_job" onClick={() => navigate('/myFav')}>Favorites</button>
         </div>
     );
