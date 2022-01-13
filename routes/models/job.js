@@ -21,7 +21,6 @@ function updateJob(job) {
         company_website: job.company_website,
         _id: job._id
     });
-    console.log('prepare to update!!!!!!')
     return JobModel.findByIdAndUpdate(job._id, jobInstance).exec();
 }
 
