@@ -45,13 +45,9 @@ export default function JobForm() {
         if (!job_title || !company_name || !location || !description || !employer_email) {
             return setErrMsg('Missing Data');
         }
-        console.log(form);
         axios.post(url, form)
             .then((res) => {
-                console.log('the res is');
-                console.log(res.data);
                 navigate('/jobDetail/' + res.data);
-                console.log(res.data);
             })
             .catch(e => console.log(e.response.data));
     }

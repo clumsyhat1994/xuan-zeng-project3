@@ -27,23 +27,12 @@ export default function SearchResult() {
     for (let i in searchResults) {
         console.log(searchResults[i]._id);
         resultList.push(
-            /*
-            <div className="snippet" key={"snippet " + i} id={"snippet " + i} onClick={() => {
-                console.log('click!!!')
-                navigate('/jobDetail/' + searchResults[i]._id);
-            }}>
-                <div><strong>{searchResults[i].job_title}</strong></div>
-                <div>{searchResults[i].company_name}</div>
-                <div>{searchResults[i].location}</div>
-                
-            </div>
-            */
             <Snippet key={'snippet' + i} id={searchResults[i]._id} job_title={searchResults[i].job_title}
                 company_name={searchResults[i].company_name} location={searchResults[i].location} />
         );
     }
 
-    //console.log('keyword ' + keyword);
+
     return (
         <div id="searchResults">
             <h1>{defaultMsg}</h1>

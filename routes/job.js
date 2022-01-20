@@ -33,17 +33,12 @@ router.get('/id/:id', function (req, res) {
 })
 
 router.post('/post', authentication, function (req, res) {
-    //console.log('calling!!!!!');
-    //console.log(req.body);
     const { job_title, company_name, location, description
         , employer_email } = req.body;
     if (!job_title || !company_name || !location || !description || !employer_email) {
         return res.status(422).send('Missing data');
     }
-    //req.body = '{ creator: hey }';
-    //console.log('after process!!!!!!!');
     req.body = { ...req.body, creator: req.username }
-    //console.log(req.body);
     JobFunctions.createJob(req.body)
         .then(result => res.status(200).send(result._id))
         .catch(err => res.status(400).send(err));
@@ -55,8 +50,6 @@ router.post('/update', function (req, res) {
     if (!job_title || !company_name || !location || !description || !employer_email || !_id) {
         return res.status(422).send('Missing data');
     }
-    console.log('request received!!!!!!!!');
-    //res.send(JobFunctions.updateJob(req.body));
     JobFunctions.updateJob(req.body)
         .then(result => res.status(200).send(_id))
         .catch(err => res.status(400).send(err));

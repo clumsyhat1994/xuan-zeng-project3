@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 export default function LikeBtn(props) {
-    //[color, setColor] = useState('white');
-    //console.log('state is ' + props.state);
     const navigate = useNavigate();
     let text = 'LIKE';
     if (props.state === 'liked') {

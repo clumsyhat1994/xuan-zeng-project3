@@ -29,8 +29,8 @@ export default function SearchResult() {
                         setDefaultMsg("You haven't liked any job posts yet!");
                     }
                     setFavList(res.data.favorites);
-                    console.log('heres your fav');
-                    console.log(res.data.favorites);
+                    //console.log('heres your fav');
+                    //console.log(res.data.favorites);
                 })
                 .catch(e => console.log(e));
         }
@@ -38,14 +38,12 @@ export default function SearchResult() {
 
     const resultList = [];
     for (let i in favList) {
-        console.log(favList[i]);
         resultList.push(
             <Snippet key={'snippet' + i} id={favList[i]._id} job_title={favList[i].job_title}
                 company_name={favList[i].company_name} location={favList[i].location} />
         );
     }
 
-    //console.log('keyword ' + keyword);
     return (
         <div id="searchResults">
             <h1>{defaultMsg}</h1>

@@ -55,28 +55,20 @@ router.post('/logout', function (req, res) {
 })
 
 router.post('/login', function (req, res) {
-    console.log("Front end is calling!!!!!!!!!!!!!");
     const { username, password } = req.body;
     if (!username || !password) {
-        //console.log("Missing data!!!!");
         return res.status(422).send('Missing data');
     }
-    //console.log("Begin processing!!!!");
     UserFunction.findUserByName(username)
         .then(result => {
             if (!result) {
-                //console.log("No such user!!!!");
                 return res.status(404).send('No such user!');
             }
-            //console.log('result is ' + result);
-            //console.log('password is ' + result.password);
 
             if (password === result.password) {
-                //console.log("log in !!!!");
                 req.session.username = username;
                 return res.status(200).send(username);
             }
-            //console.log("Wrong password!!!!");
             res.status(400).send("Wrong password!");
         })
         .catch(err => res.status(400).send(err));

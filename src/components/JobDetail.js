@@ -47,13 +47,10 @@ export default function JobDetail() {
                     setDefaultMsg("Nothing found!");
                 }
                 setDetail(response.data);
-                //console.log('response is ' + response);
-                //console.log(response);
                 setBtns(response.data.creator);
             })
             .catch(err => {
                 console.log(err)
-                //setDefaultMsg(err.response.data);
             });
     }
 

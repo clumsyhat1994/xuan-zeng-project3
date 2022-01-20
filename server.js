@@ -8,16 +8,17 @@ const MongoStore = require('connect-mongo');
 const cors = require('cors')
 const path = require('path');
 
+
 const mongoDB = 'mongodb+srv://xuan:gzzxuan588@cluster0.lfeaf.mongodb.net/jobpost?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const app = express();
-
-
+//require('dotenv').config();
 app.use(session({
-    secret: "NOT_SO_CLUMSY_HAT",
+    //    secret: process.env.SECRET,
+    secret: 'NOT_SO_CLUMSY_HAT',
     store: new MongoStore({ mongoUrl: mongoDB })
 }));
 
@@ -34,7 +35,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, "build", "index.html"));
-    // res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(process.env.PORT || 8000, function () {

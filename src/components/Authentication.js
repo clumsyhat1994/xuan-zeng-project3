@@ -6,9 +6,6 @@ import { useDispatch } from 'react-redux';
 
 
 export default (props) => {
-
-
-    //console.log(props.mode);
     let buttonText = '';
     let expressRoute = '';
 
@@ -43,7 +40,6 @@ export default (props) => {
                 }}></input>
             </>);
     }
-    //console.log('userData is ' + userData.username + userData.password);
     function handleClick() {
         if (props.mode === 'register' && userData.password !== userData.verify) {
             return setErrMsg('Passwords don\'t match');
@@ -61,8 +57,6 @@ export default (props) => {
             .catch(
                 err => {
                     console.log("There's an error" + err.response);
-                    //console.log(err.response.status);
-                    //console.log(err.response.data);
                     setErrMsg(err.response.data);
                 });
     }

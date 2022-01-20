@@ -4,8 +4,6 @@ import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 export default function () {
     const isLoggedin = useSelector(state => state);
-    console.log('Nav isLoggedIn ' + isLoggedin);
-    console.log('localStorage ' + localStorage.getItem('username'));
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const username = localStorage.getItem('username');
@@ -50,7 +48,6 @@ export default function () {
     } else {
         buttons = [logInBtn, signUpBtn];
     }
-    //const [buttons, setButtons] = useState([]);
 
 
     return (
