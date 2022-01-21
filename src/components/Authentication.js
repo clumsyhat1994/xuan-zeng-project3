@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 
 
 export default (props) => {
@@ -25,7 +25,7 @@ export default (props) => {
         verify: ''
     });
 
-    useEffect(() => { setErrMsg('') }, []);
+
     const dispatch = useDispatch();
     let fragment = (<></>);
     if (props.mode === 'register') {
@@ -40,6 +40,7 @@ export default (props) => {
                 }}></input>
             </>);
     }
+
     function handleClick() {
         if (props.mode === 'register' && userData.password !== userData.verify) {
             return setErrMsg('Passwords don\'t match');
@@ -79,6 +80,12 @@ export default (props) => {
             }}></input>
             {fragment}
             <button type='button' onClick={handleClick}>{buttonText}</button>
+            {props.mode === 'login' ?
+                <div className='link' onClick={() => {
+                    setErrMsg('');
+                    navigate('/register');
+                }}>Don't have an account? Click here to sign up!</div>
+                : <></>}
         </div>
     );
 }

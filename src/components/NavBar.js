@@ -9,8 +9,8 @@ export default function () {
     const dispatch = useDispatch();
     const username = localStorage.getItem('username');
 
-    const favBtn = (<button id="fav_job" onClick={() => navigate('/myFav')}>Favorites</button>);
-    const postBtn = (<button id="post_job" onClick={() => navigate('/postJob')}>Post job</button>);
+    const favBtn = (<button id="fav_job" key="fav_job" onClick={() => navigate('/myFav')}>Favorites</button>);
+    const postBtn = (<button id="post_job" key="post_job" onClick={() => navigate('/postJob')}>Post job</button>);
     /** 
     const isLoggedInBtn =
         (<button type="button" onClick={() => {
@@ -29,14 +29,18 @@ export default function () {
                 })
                 .catch(console.error)
         }}>Log out</button>);
-    */
+   
     const signUpBtn =
         (<button type="button" key='signup' onClick={() => {
             navigate('/register');
         }}>Sign up</button>);
+    */
+
+
     const logInBtn =
         (<button type="button" key='login' onClick={() => {
             navigate('/login');
+            window.location.reload();
         }}>Log in</button>);
 
     /** 
@@ -58,7 +62,7 @@ export default function () {
     if (isLoggedin) {
         buttons = <UserIcon />;
     } else {
-        buttons = [favBtn, postBtn, logInBtn, signUpBtn];
+        buttons = [favBtn, postBtn, logInBtn];
     }
 
 
