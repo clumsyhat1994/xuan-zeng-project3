@@ -16,7 +16,7 @@ code {
 
 #root{
   position: relative;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 
@@ -83,10 +83,11 @@ code {
 
 
 #navBar{
-  height: 85px;
+  height: 70px;
   border-bottom: solid dimgray 3px;
 }
 
+/**
 #navBar span{
   position: relative;
   font-size: 30px;
@@ -94,6 +95,7 @@ code {
   top: 16px;
   font-family: "Lucida Console", "Courier New", monospace;
 }
+*/
 
 #navBar button{
   float: right;
@@ -102,20 +104,66 @@ code {
   font-size: inherit;
   margin-right: 10px;
   border: none;
-  background-color: lightgray;
+  background-color: rgba(0, 0, 0, 0);
   padding-top: 20px;
   padding-bottom: 20px;
   cursor: pointer;
+  transform:translateY(-5%);
 }
 
 #navBar #home{
   margin-left: 20px;
   float: left;
+  font-weight: bold;
+  transform:translateY(-5%);
 }
 
 #navBar button:hover{
   border-bottom: black 5px solid;
 }
+
+
+#userIcon{
+
+  float: right;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: inherit;
+  margin-right: 10px;
+  border: none;
+  background-color: lightgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transform:translateY(-7%);
+}
+
+#userIcon img{
+  
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+#userMenu{
+  position: absolute;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  transform: translateX(-80%);
+  overflow: hidden;
+  height: 220px;
+  width: 200px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+#userMenu button,
+#userMenu div{
+  color: white;
+  height: 10px;
+  padding: 2px;
+}
+
 
 h1{
   position: relative;
@@ -303,3 +351,5 @@ textarea{
   background-color: black;
   color: white;
 }
+
+

@@ -55,7 +55,7 @@ router.post('/update', function (req, res) {
         .catch(err => res.status(400).send(err));
 })
 
-router.post('/delete', function (req, res) {
+router.delete('/delete', function (req, res) {
     const { jobId } = req.body;
     if (!jobId) {
         return res.status(422).send('Missing data');

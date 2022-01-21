@@ -20,7 +20,7 @@ export default function JobDetail() {
     }>UPDATE</button>);
     const deleteBtn = (<button id="delete" key='delete' onClick={
         () => {
-            axios.post('/api/job/delete/', { jobId: id })
+            axios.delete('/api/job/delete/', { jobId: id })
                 .then(() => {
                     navigate('/');
                 })

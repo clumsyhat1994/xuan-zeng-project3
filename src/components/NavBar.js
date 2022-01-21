@@ -2,26 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
+import UserIcon from "./UserIcon";
 export default function () {
     const isLoggedin = useSelector(state => state);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const username = localStorage.getItem('username');
+
+    const favBtn = (<button id="fav_job" onClick={() => navigate('/myFav')}>Favorites</button>);
     const postBtn = (<button id="post_job" onClick={() => navigate('/postJob')}>Post job</button>);
+    /** 
     const isLoggedInBtn =
         (<button type="button" onClick={() => {
             axios.get('/api/user/isLoggedIn')
                 .then(response => console.log('Username logged in: ' + response.data))
                 .catch(err => console.log(err));
         }}>isLoggedIn</button>);
-    const signUpBtn =
-        (<button type="button" key='signup' onClick={() => {
-            navigate('/register');
-        }}>Sign up</button>);
-    const logInBtn =
-        (<button type="button" key='login' onClick={() => {
-            navigate('/login');
-        }}>Log in</button>);
+
     const logOutBtn =
         (<button type="button" key='logout' onClick={() => {
             axios.post('/api/user/logout')
@@ -32,8 +29,23 @@ export default function () {
                 })
                 .catch(console.error)
         }}>Log out</button>);
+    */
+    const signUpBtn =
+        (<button type="button" key='signup' onClick={() => {
+            navigate('/register');
+        }}>Sign up</button>);
+    const logInBtn =
+        (<button type="button" key='login' onClick={() => {
+            navigate('/login');
+        }}>Log in</button>);
 
-
+    /** 
+        const userIcon = (
+        <>
+            <img id='userIcon' src={user} style={imgStyle} />
+            <div id="menu"></div>
+        </>
+    )*/
     function checkLogIn() {
         if (localStorage.getItem('username')) {
             dispatch({ type: 'LOGIN' })
@@ -44,18 +56,16 @@ export default function () {
     useEffect(checkLogIn, []);
     let buttons = [];
     if (isLoggedin) {
-        buttons = [logOutBtn, postBtn];
+        buttons = <UserIcon />;
     } else {
-        buttons = [logInBtn, signUpBtn];
+        buttons = [favBtn, postBtn, logInBtn, signUpBtn];
     }
 
 
     return (
         <div id="navBar">
             <button id="home" onClick={() => navigate('/')}>HOME</button>
-            <span>{username}</span>
             {buttons}
-            <button id="post_job" onClick={() => navigate('/myFav')}>Favorites</button>
         </div>
     );
 }
