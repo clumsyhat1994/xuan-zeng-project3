@@ -6,7 +6,7 @@ export default function SearchBar() {
     const navigate = useNavigate();
     return (
         <>
-            <h1>THE STEVE'S JOBS</h1>
+            <h1>A REAL JOB BOARD</h1>
             <div id='searchBar'>
                 <input onChange={(e) => {
                     setSearchContent(e.target.value);
