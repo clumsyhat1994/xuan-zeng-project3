@@ -56,15 +56,6 @@ export default function JobForm() {
         <div id="job_form">
             <div className='error'>{errMsg}</div>
 
-            <label htmlFor="company_name">Company Name *</label>
-            <input type='text' id="company_name" value={form.company_name}
-                onChange={(e) => {
-                    setForm({
-                        ...form,
-                        company_name: e.target.value
-                    })
-                }}></input>
-
             <label htmlFor="job_title">Job Title *</label>
             <input type='text' id="job_title" value={form.job_title} onChange={(e) => {
                 setForm({
