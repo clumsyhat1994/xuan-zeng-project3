@@ -92,6 +92,7 @@ code {
 #navBar{
   height: 70px;
   border-bottom: solid dimgray 3px;
+  padding-right: 15px;
 }
 
 /**
@@ -160,7 +161,7 @@ code {
   transform: translateX(-80%);
   overflow: hidden;
   height: 220px;
-  width: 200px;
+  width: 150px;
   padding-left: 10px;
   padding-top: 10px;
 }
@@ -168,10 +169,17 @@ code {
 #userMenu button,
 #userMenu div{
   color: white;
-  height: 10px;
+  height: 25px;
   padding: 2px;
 }
 
+#userMenu div{
+  font-weight: bold;
+}
+
+#userMenu button:hover{
+  border-bottom: white solid 2px;
+}
 
 h1{
   position: relative;
@@ -275,10 +283,12 @@ h1{
 
 
 #like{
-  font-size: 30px;
+  font-size: 25px;
   position: absolute;
   right: 0;
   cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #detail .default,
@@ -288,6 +298,8 @@ h1{
 }
 
 #detail button{
+  font-size: 18px;
+  margin-right: 10px;
   cursor: pointer;
 }
 

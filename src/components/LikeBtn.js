@@ -9,15 +9,17 @@ export default function LikeBtn(props) {
     }
     function handleClick() {
         if (props.state === 'unliked') {
+            props.setLikeState('liked');
             axios.post('/api/user/like', { jobId: props.jobId })
-                .then(() => { props.setLikeState('liked') })
+                .then()
                 .catch((e) => {
                     console.log(e);
                     navigate('/login');
                 });
         } else if (props.state === 'liked') {
+            props.setLikeState('unliked')
             axios.post('/api/user/unlike', { jobId: props.jobId })
-                .then(() => { props.setLikeState('unliked') })
+                .then()
                 .catch((e) => {
                     console.log(e);
                     navigate('/login');

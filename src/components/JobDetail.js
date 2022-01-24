@@ -10,7 +10,7 @@ export default function JobDetail() {
     const id = useParams().id;
     const [detail, setDetail] = useState({});
     const [defaultMsg, setDefaultMsg] = useState('');
-    const [likeState, setLikeState] = useState('default');
+    const [likeState, setLikeState] = useState(null);
     const [isOwner, setIsOwner] = useState(false);
     const navigate = useNavigate();
     const updateBtn = (<button id="update" key='update' onClick={
@@ -34,10 +34,10 @@ export default function JobDetail() {
         }
     }
 
-    let buttons = [];
-    if (isOwner) {
-        buttons = [updateBtn, deleteBtn]
-    }
+
+    const buttons = isOwner ? [updateBtn, deleteBtn] : [];
+
+    const likeBtn = likeState ? <LikeBtn state={likeState} jobId={id} setLikeState={setLikeState} /> : null;
 
 
     function getDetail() {
@@ -68,6 +68,7 @@ export default function JobDetail() {
                 .catch();
         }
     }
+
     useEffect(getDetail, []);
     useEffect(checkFav, []);
 
@@ -79,7 +80,7 @@ export default function JobDetail() {
             <header>
                 <div>
                     <strong>{detail.job_title}</strong>
-                    <LikeBtn state={likeState} jobId={id} setLikeState={setLikeState} />
+                    {likeBtn}
                 </div>
                 <div>{detail.company_name}</div>
                 <div>{detail.company_website}</div>
