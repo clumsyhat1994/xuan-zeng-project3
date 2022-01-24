@@ -17,8 +17,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const app = express();
 //require('dotenv').config();
 app.use(session({
-    // secret: process.env.SECRET,
-    secret: 'NOT_SO_CLUMSY_HAT',
+    secret: process.env.SECRET,
+    //secret: 'NOT_SO_CLUMSY_HAT',
     store: new MongoStore({ mongoUrl: mongoDB })
 }));
 
