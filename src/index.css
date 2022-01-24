@@ -90,6 +90,8 @@ code {
 
 
 #navBar{
+  position: relative;
+  z-index: 10;
   height: 70px;
   border-bottom: solid dimgray 3px;
   padding-right: 15px;
@@ -133,7 +135,7 @@ code {
 
 
 #userIcon{
-
+  z-index: 10;
   float: right;
   box-sizing: border-box;
   height: 40px;
@@ -147,19 +149,21 @@ code {
 }
 
 #userIcon img{
-  
+  z-index: 10;
   width: 40px;
   height: 40px;
   cursor: pointer;
 }
 
 #userMenu{
+  
   position: absolute;
+  
   background-color: black;
   display: flex;
   flex-wrap: wrap;
   transform: translateX(-80%);
-  overflow: hidden;
+  
   height: 220px;
   width: 150px;
   padding-left: 10px;
@@ -168,6 +172,8 @@ code {
 
 #userMenu button,
 #userMenu div{
+  
+  z-index: 10;
   color: white;
   height: 25px;
   padding: 2px;
@@ -237,7 +243,9 @@ h1{
 
 
 #searchResults{
+  
   position: relative;
+  z-index: 0;
   top: 50px;
   padding-bottom: 30px;
 }
@@ -253,6 +261,7 @@ h1{
 
 
 .snippet{
+  pointer-events: initial;
   position: relative;
   width: 600px;
   left: 50%;

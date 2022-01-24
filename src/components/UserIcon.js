@@ -13,6 +13,7 @@ export default function UserIcon(props) {
     }
     useEffect(() => {
         document.addEventListener('click', hide)
+        return () => document.removeEventListener('click', hide)
     });
     return (
         <div id="userIcon" onClick={handleClick}>
