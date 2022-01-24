@@ -62,7 +62,7 @@ export default function () {
     if (isLoggedin) {
         buttons = <UserIcon />;
     } else {
-        buttons = [favBtn, postBtn, logInBtn];
+        buttons = [logInBtn, favBtn, postBtn];
     }
 
 

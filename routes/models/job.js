@@ -4,7 +4,7 @@ const JobSchema = require('../schema/job').JobSchema
 const JobModel = mongoose.model("Job", JobSchema);
 
 function getAllJobs() {
-    return JobModel.find().exec();
+    return JobModel.find().limit(10).exec();
 }
 
 function createJob(job) {

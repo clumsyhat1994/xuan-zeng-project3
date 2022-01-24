@@ -108,7 +108,7 @@ code {
   float: right;
   box-sizing: border-box;
   height: 80px;
-  font-size: inherit;
+  font-size: 18px;
   margin-right: 10px;
   border: none;
   background-color: rgba(0, 0, 0, 0);
@@ -119,6 +119,7 @@ code {
 }
 
 #navBar #home{
+  font-size: 25px;
   margin-left: 20px;
   float: left;
   font-weight: bold;
@@ -230,7 +231,18 @@ h1{
 #searchResults{
   position: relative;
   top: 50px;
+  padding-bottom: 30px;
 }
+
+#searchResults h4,
+#searchResults h3
+{
+  position: relative;
+  left: 50%;
+  width: fit-content;
+  transform: translate(-50%);
+}
+
 
 .snippet{
   position: relative;
