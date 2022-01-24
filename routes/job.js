@@ -56,6 +56,7 @@ router.post('/update', function (req, res) {
 })
 
 router.delete('/delete', function (req, res) {
+    //console.log(req.body);
     const { jobId } = req.body;
     if (!jobId) {
         return res.status(422).send('Missing data');
