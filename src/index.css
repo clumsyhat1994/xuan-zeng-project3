@@ -28,6 +28,7 @@ code {
 .error{
   color: crimson;
 }
+
 #authentication{
   position: absolute;
   left: 50%;
@@ -123,13 +124,14 @@ code {
 
 #navBar #home{
   font-size: 25px;
+  height: 60px;
   margin-left: 20px;
   float: left;
   font-weight: bold;
-  transform:translateY(-5%);
+  transform:translateY(4%);
 }
 
-#navBar button:hover{
+#navBar button:not(#home):hover{
   border-bottom: black 5px solid;
 }
 
@@ -343,7 +345,7 @@ h1{
 
 #job_form{
   position: relative;
-  top: 20px;
+  top: 25px;
   width: 40%;
   left: 50%;
   transform: translate(-50%);
@@ -356,11 +358,11 @@ textarea{
   width: 100%;
   display: block;
   font-size: 20px;
-  
   background-color: lightgray;
 }
 
 #job_form label{
+  text-align: left;
   margin-bottom: 5px;
 }
 
