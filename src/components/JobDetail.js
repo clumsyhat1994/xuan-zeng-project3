@@ -80,7 +80,7 @@ export default function JobDetail() {
             <header>
                 <div>
                     <strong>{detail.job_title}</strong>
-                    {likeBtn}
+
                 </div>
                 <div>{detail.company_name}</div>
                 <div>{detail.company_website}</div>
@@ -89,6 +89,7 @@ export default function JobDetail() {
                 <div>{detail.posting_date}</div>
             </header>
             <p id="description">{detail.description}</p>
+            {likeBtn}
             {buttons}
         </div>
     );

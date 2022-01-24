@@ -290,6 +290,8 @@ h1{
   left: 50%;
   transform: translate(-50%);
   top: 50px;
+  height: fit-content;
+  padding-bottom:80px;
 }
 
 
