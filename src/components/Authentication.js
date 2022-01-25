@@ -37,7 +37,7 @@ export default (props) => {
         fragment = (
             <>
                 <label htmlFor='verify'>Verify password</label>
-                <input type='text' value={userData.verify} id='verify' onChange={(e) => {
+                <input type='password' value={userData.verify} id='verify' onChange={(e) => {
                     setUserData({
                         ...userData,
                         verify: e.target.value
