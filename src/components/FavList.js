@@ -12,13 +12,16 @@ export default function SearchResult() {
     useEffect(getList, []);
 
     function checkLoggedIn() {
+        if (!localStorage.getItem('username')) navigate('/login', { state: { from: '/myFav' } });
+        /** 
         axios.get('/api/user/isLoggedIn')
             .then(response => { console.log('Username logged in: ' + response.data) })
             .catch((err) => {
                 navigate('/login')
                 console.log(err)
-            });
+            });*/
     }
+
 
     function getList() {
         let username = localStorage.getItem('username')
@@ -29,8 +32,6 @@ export default function SearchResult() {
                         setDefaultMsg("You haven't liked any job posts yet!");
                     }
                     setFavList(res.data.favorites);
-                    //console.log('heres your fav');
-                    //console.log(res.data.favorites);
                 })
                 .catch(e => console.log(e));
         }

@@ -34,7 +34,7 @@ export default function JobForm() {
         axios.get('/api/user/isLoggedIn')
             .then(response => console.log('Username logged in: ' + response.data))
             .catch((err) => {
-                navigate('/login')
+                navigate('/login', { state: { from: '/postJob' } })
                 console.log(err.response.data)
             });
     }

@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams, useLocation } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 export default (props) => {
+
+
+
     let buttonText = '';
     let expressRoute = '';
 
@@ -16,6 +19,8 @@ export default (props) => {
         buttonText = 'Sign up';
         expressRoute = '/api/user'
     }
+
+    const location = useLocation();
 
     const navigate = useNavigate();
     const [errMsg, setErrMsg] = useState("");
@@ -53,7 +58,7 @@ export default (props) => {
                 dispatch({
                     type: 'LOGIN'
                 });
-                navigate('/');
+                navigate(location.state ? location.state.from : '/');
             })
             .catch(
                 err => {

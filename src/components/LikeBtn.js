@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 export default function LikeBtn(props) {
+    const location = useLocation();
     const navigate = useNavigate();
     const text = props.likeState ? 'UNLIKE' : 'LIKE';
     function handleClick() {
         if (!localStorage.getItem('username')) {
-            navigate('/login');
+            navigate('/login', { state: { from: location.pathname } });
         }
         const url = props.likeState ? '/api/user/unlike' : '/api/user/like';
         props.setLikeState(!props.likeState);
@@ -14,7 +15,7 @@ export default function LikeBtn(props) {
             .then()
             .catch((e) => {
                 console.log(e);
-                navigate('/login');
+                navigate('/login', { state: { from: location.pathname } });
             });
     }
     return (

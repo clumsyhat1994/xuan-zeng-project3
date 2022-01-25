@@ -37,7 +37,7 @@ export default function JobDetail() {
 
     const buttons = isOwner ? [updateBtn, deleteBtn] : [];
 
-    const likeBtn = (likeState !== null) ? <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} /> : null;
+    //const likeBtn = (likeState !== null) ? <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} /> : null;
 
 
     function getDetail() {
@@ -80,7 +80,6 @@ export default function JobDetail() {
             <header>
                 <div>
                     <strong>{detail.job_title}</strong>
-
                 </div>
                 <div>{detail.company_name}</div>
                 <div>{detail.company_website}</div>
@@ -89,7 +88,7 @@ export default function JobDetail() {
                 <div>{detail.posting_date}</div>
             </header>
             <p id="description">{detail.description}</p>
-            {likeBtn}
+            <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} />
             {buttons}
         </div>
     );
