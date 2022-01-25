@@ -3,33 +3,21 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 export default function LikeBtn(props) {
     const navigate = useNavigate();
-    let text = 'LIKE';
-    if (props.state === 'liked') {
-        text = 'UNLIKE'
-    }
+    const text = props.likeState ? 'UNLIKE' : 'LIKE';
     function handleClick() {
-        if (props.state === 'unliked') {
-            props.setLikeState('liked');
-            axios.post('/api/user/like', { jobId: props.jobId })
-                .then()
-                .catch((e) => {
-                    console.log(e);
-                    navigate('/login');
-                });
-        } else if (props.state === 'liked') {
-            props.setLikeState('unliked')
-            axios.post('/api/user/unlike', { jobId: props.jobId })
-                .then()
-                .catch((e) => {
-                    console.log(e);
-                    navigate('/login');
-                });
-        }
         if (!localStorage.getItem('username')) {
             navigate('/login');
         }
+        const url = props.likeState ? '/api/user/unlike' : '/api/user/like';
+        props.setLikeState(!props.likeState);
+        axios.post(url, { jobId: props.jobId })
+            .then()
+            .catch((e) => {
+                console.log(e);
+                navigate('/login');
+            });
     }
     return (
-        <button id="like" className={props.state} onClick={handleClick}>{text}</button>
+        <button id="like" className={props.likeState ? 'liked' : 'unliked'} onClick={handleClick}>{text}</button>
     );
 }

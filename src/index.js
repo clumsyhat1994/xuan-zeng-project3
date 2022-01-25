@@ -21,7 +21,7 @@ ReactDOM.render(
       <NavBar />
       <Routes>
         <Route path='/' element={<SearchBar />} />
-        <Route path='/login' element={<Authentication mode='login' />} />
+        <Route path='/login/:prevURL' element={<Authentication mode='login' />} />
         <Route path='/register' element={<Authentication mode='register' />} />
         <Route path='/searchResult/:keyword' element={<SearchResult />} />
         <Route path='/jobDetail/:id' element={<JobDetail />} />

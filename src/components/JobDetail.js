@@ -37,7 +37,7 @@ export default function JobDetail() {
 
     const buttons = isOwner ? [updateBtn, deleteBtn] : [];
 
-    const likeBtn = likeState ? <LikeBtn state={likeState} jobId={id} setLikeState={setLikeState} /> : null;
+    const likeBtn = (likeState !== null) ? <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} /> : null;
 
 
     function getDetail() {
@@ -60,9 +60,9 @@ export default function JobDetail() {
             axios.get('/api/user/name/' + username)
                 .then((res) => {
                     if (res.data.favorites.includes(id)) {
-                        setLikeState('liked');
+                        setLikeState(true);
                     } else {
-                        setLikeState('unliked');
+                        setLikeState(false);
                     }
                 })
                 .catch();
