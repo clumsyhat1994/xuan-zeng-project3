@@ -77,7 +77,7 @@ export default (props) => {
                 });
             }}></input>
             <label htmlFor='password'>Password</label>
-            <input type='text' value={userData.password} name='password' id='password' onChange={(e) => {
+            <input type='password' value={userData.password} name='password' id='password' onChange={(e) => {
                 setUserData({
                     ...userData,
                     password: e.target.value
