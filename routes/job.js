@@ -28,7 +28,10 @@ router.get('/title/:title', function (req, res) {
 
 router.get('/id/:id', function (req, res) {
     JobFunctions.findJobById(req.params.id)
-        .then((result) => res.status(200).send(result))
+        .then((result) => {
+            res.status(200).send(result);
+            //console.log(result)
+        })
         .catch(err => res.status(400).send(err));
 })
 
