@@ -1,3 +1,7 @@
+html, body, root{
+  height: 750px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -17,6 +21,7 @@ code {
 #root{
   position: relative;
   font-size: 24px;
+  height: 100%;
 }
 
 
@@ -27,6 +32,14 @@ code {
 
 .error{
   color: crimson;
+}
+
+#note{
+  font-size: 15px;
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  
 }
 
 #authentication{
@@ -131,7 +144,7 @@ code {
   transform:translateY(4%);
 }
 
-#navBar button:not(#home):hover{
+#navBar> button:not(#home):hover{
   border-bottom: black 5px solid;
 }
 
