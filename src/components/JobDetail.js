@@ -54,6 +54,8 @@ export default function JobDetail() {
             });
     }
 
+    console.log(detail.posting_date);
+    console.log(typeof detail.posting_date);
     function checkFav() {
         let username = localStorage.getItem('username')
         if (username) {
@@ -81,8 +83,7 @@ export default function JobDetail() {
                 <div>
                     <strong>{detail.job_title}</strong>
                 </div>
-                <div>{detail.company_name}</div>
-                <div>{detail.company_website}</div>
+                <div><a href={detail.company_website ? detail.company_website : undefined} target="_blank">{detail.company_name}</a></div>
                 <div>{detail.location}</div>
                 <a href={"mailto:" + detail.employer_email}>{detail.employer_email}</a>
                 <div>{detail.posting_date}</div>

@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 
 
 export default (props) => {
-
-
-
     let buttonText = '';
     let expressRoute = '';
 
@@ -88,7 +85,7 @@ export default (props) => {
             {props.mode === 'login' ?
                 <div className='link' onClick={() => {
                     setErrMsg('');
-                    navigate('/register');
+                    navigate('/register', { state: { from: location.state.from } });
                 }}>Don't have an account? Click here to sign up!</div>
                 : <></>}
         </div>

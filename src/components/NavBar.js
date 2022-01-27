@@ -10,16 +10,17 @@ export default function () {
     const location = useLocation();
     const username = localStorage.getItem('username');
 
+
     const favBtn = (<button id="fav_job" key="fav_job" onClick={() => navigate('/myFav')}>Favorites</button>);
     const postBtn = (<button id="post_job" key="post_job" onClick={() => navigate('/postJob')}>Post job</button>);
 
+    const from = (location.pathname === '/register' || location.pathname === '/login') ? location.state.from : location.pathname;
 
     const logInBtn =
         (<button type="button" key='login' onClick={() => {
-            navigate('/login', { state: { from: location.pathname } });
+            navigate('/login', { state: { from: from } });
             window.location.reload();
         }}>Log in</button>);
-
 
     function checkLogIn() {
         if (localStorage.getItem('username')) {
