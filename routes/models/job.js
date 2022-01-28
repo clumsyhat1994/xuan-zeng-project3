@@ -7,6 +7,10 @@ function getAllJobs() {
     return JobModel.find().limit(10).exec();
 }
 
+function getAllJobsExcept(arr) {
+    return JobModel.find({ job_title: { $nin: arr } }).limit(10).exec();
+}
+
 function createJob(job) {
     return JobModel.create(job);
 }
@@ -47,5 +51,6 @@ module.exports = {
     findJobById,
     getAllJobs,
     search,
-    deleteJob
+    deleteJob,
+    getAllJobsExcept
 }
