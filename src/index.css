@@ -308,13 +308,21 @@ h1{
 }
 
 
-#like{
-  font-size: 25px;
-  position: absolute;
-  right: 0;
+#like, #apply{
+  margin-top: 1em;
+  position: relative;
   cursor: pointer;
-  padding: 10px;
+  padding: 8px;
   border-radius: 5px;
+}
+
+#detail #apply{
+  background-color: black;
+  
+}
+#detail #apply a{
+  color: white;
+  text-decoration: none;
 }
 
 #detail .default,
@@ -324,7 +332,7 @@ h1{
 }
 
 #detail button{
-  font-size: 18px;
+  font-size: 16px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -343,16 +351,14 @@ h1{
   font-size: 30px;
 }
 
-#detail div,
-#detail a{
+#detail div{
   font-size: 20px;
 }
 #detail a{
-  position: relative;
-  display: block;
-  color: black;
+  color: black ;
 }
 #detail p{
+  white-space: pre-line;
   word-wrap: break-word;
   font-size: 25px;
   text-align: justify;

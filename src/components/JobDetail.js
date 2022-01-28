@@ -46,6 +46,7 @@ export default function JobDetail() {
                 if (!response.data) {
                     setDefaultMsg("Nothing found!");
                 }
+                //response.data.description = response.data.description.replace(/[\r\n]/g, '<br />');
                 setDetail(response.data);
                 setBtns(response.data.creator);
             })
@@ -83,11 +84,13 @@ export default function JobDetail() {
                 </div>
                 <div><a href={detail.company_website ? detail.company_website : undefined} target="_blank">{detail.company_name}</a></div>
                 <div>{detail.location}</div>
-                <a href={"mailto:" + detail.employer_email}>{detail.employer_email}</a>
-                <div>{detail.posting_date_formatted}</div>
+                <div><a href={"mailto:" + detail.employer_email}>{detail.employer_email}</a></div>
+                <div>Posted: {detail.posting_date_formatted}</div>
             </header>
-            <p id="description">{detail.description}</p>
+            <button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY</a></button>
             <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} />
+
+            <p id="description">{detail.description}</p>
             {buttons}
         </div>
     );
