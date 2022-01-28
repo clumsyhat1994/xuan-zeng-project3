@@ -10,9 +10,6 @@ router.get('/test', function (req, res) {
 
 router.get('/', function (req, res) {
     const arr = req.query.names.split(',');
-    //console.log(req.url);
-    console.log('the names are:')
-    console.log(arr)
     JobFunctions.getAllJobsExcept(arr)
         .then(allJobs => res.send(allJobs))
         .catch(err => res.status(400).send(err));
