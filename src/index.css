@@ -190,7 +190,7 @@ code {
   
   z-index: 10;
   color: white;
-  height: 25px;
+  height: fit-content;
   padding: 2px;
 }
 
@@ -320,6 +320,12 @@ h1{
   background-color: black;
   
 }
+
+#detail #like{
+  min-width: 62px;
+  min-height: 35px;
+}
+
 #detail #apply a{
   color: white;
   text-decoration: none;

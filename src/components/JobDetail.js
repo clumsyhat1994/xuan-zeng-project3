@@ -12,6 +12,7 @@ export default function JobDetail() {
     const [defaultMsg, setDefaultMsg] = useState('');
     const [likeState, setLikeState] = useState(null);
     const [isOwner, setIsOwner] = useState(false);
+    const [finishLoad, setFinishLoad] = useState(false);
     const navigate = useNavigate();
     const updateBtn = (<button id="update" key='update' onClick={
         () => {
@@ -37,8 +38,8 @@ export default function JobDetail() {
 
     const buttons = isOwner ? [updateBtn, deleteBtn] : [];
 
-    //const likeBtn = (likeState !== null) ? <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} /> : null;
-
+    const likeBtn = finishLoad ? <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} /> : null;
+    const applyBtn = finishLoad ? <button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY</a></button> : null;
 
     function getDetail() {
         axios.get('/api/job/id/' + id)
@@ -46,9 +47,9 @@ export default function JobDetail() {
                 if (!response.data) {
                     setDefaultMsg("Nothing found!");
                 }
-                //response.data.description = response.data.description.replace(/[\r\n]/g, '<br />');
                 setDetail(response.data);
                 setBtns(response.data.creator);
+                setFinishLoad(true);
             })
             .catch(err => {
                 console.log(err)
@@ -87,12 +88,13 @@ export default function JobDetail() {
                 <div><a href={"mailto:" + detail.employer_email}>{detail.employer_email}</a></div>
                 <div>Posted: {detail.posting_date_formatted}</div>
             </header>
-            <button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY</a></button>
-            <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} />
 
+            {applyBtn}
+            {likeBtn}
             <p id="description">{detail.description}</p>
             {buttons}
         </div>
     );
-
+    //<button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY</a></button>
+    //<LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} />
 }
