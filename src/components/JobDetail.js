@@ -39,7 +39,7 @@ export default function JobDetail() {
     const buttons = isOwner ? [updateBtn, deleteBtn] : [];
 
     const likeBtn = finishLoad ? <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} /> : null;
-    const applyBtn = finishLoad ? <button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY</a></button> : null;
+    const applyBtn = finishLoad ? <button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY NOW</a></button> : null;
 
     function getDetail() {
         axios.get('/api/job/id/' + id)
@@ -79,6 +79,7 @@ export default function JobDetail() {
     return (
         <div id="detail">
             <h1>{defaultMsg}</h1>
+            {buttons}
             <header>
                 <div>
                     <strong>{detail.job_title}</strong>
@@ -86,13 +87,12 @@ export default function JobDetail() {
                 <div><a href={detail.company_website ? detail.company_website : undefined} target="_blank">{detail.company_name}</a></div>
                 <div>{detail.location}</div>
                 <div><a href={"mailto:" + detail.employer_email}>{detail.employer_email}</a></div>
-                <div>Posted: {detail.posting_date_formatted}</div>
+                <div>{finishLoad ? 'Posted: ' : ''}{detail.posting_date_formatted}</div>
             </header>
-
             {applyBtn}
             {likeBtn}
             <p id="description">{detail.description}</p>
-            {buttons}
+
         </div>
     );
     //<button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY</a></button>
