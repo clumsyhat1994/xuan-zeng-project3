@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router';
 
 export default function JobForm() {
     const [form, setForm] = useState({});
-    const [workplaceType, setWorkPlaceType] = useState('On-site');
-    const [employmentType, setEmploymentType] = useState('Full-time')
+    const [workplaceType, setWorkPlaceType] = useState('select');
+    const [employmentType, setEmploymentType] = useState('select');
     const navigate = useNavigate();
     const id = useParams().id;
     const [errMsg, setErrMsg] = useState('');
@@ -41,7 +41,7 @@ export default function JobForm() {
     function handleSubmit() {
         const { job_title, company_name, location, description
             , employer_email, apply_link, company_website } = form;
-        if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website) {
+        if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website || workplaceType === 'select' || employmentType === 'select') {
             return setErrMsg('Missing Data');
         }
         const postForm = {
@@ -49,7 +49,7 @@ export default function JobForm() {
             workplace_type: workplaceType,
             employment_type: employmentType
         }
-        axios.post(url, form)
+        axios.post(url, postForm)
             .then((res) => {
                 navigate('/jobDetail/' + res.data);
             })
@@ -78,16 +78,18 @@ export default function JobForm() {
                 }}></input>
 
 
-            <label htmlFor="workplace_type" onChange={(e) => { setWorkPlaceType(e.target.value) }}>Workplace type *</label>
-            <select id='workplace_type'>
+            <label htmlFor="workplace_type">Workplace type *</label>
+            <select id='workplace_type' onChange={(e) => { console.log(e.target.value); setWorkPlaceType(e.target.value); }}>
+                <option value='select' hidden>Please select...</option>
                 <option value='On-site'>On-site</option>
                 <option value='Hybrid'>Hybrid</option>
                 <option value='Remote'>Remote</option>
             </select>
             <label htmlFor="employment_type" onChange={(e) => { setEmploymentType(e.target.value) }}>Employment type *</label>
-            <select id='employment_type'>
-                <option value='Full_time'>Full-time</option>
-                <option value='Part_time'>Part-time</option>
+            <select id='employment_type' onChange={(e) => { setEmploymentType(e.target.value) }}>
+                <option value='select' hidden>Please select...</option>
+                <option value='Full-time'>Full-time</option>
+                <option value='Part-time'>Part-time</option>
                 <option value='Internship'>Internship</option>
                 <option value='Volunteer'>Volunteer</option>
             </select>

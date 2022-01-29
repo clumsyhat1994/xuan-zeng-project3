@@ -35,10 +35,10 @@ code {
 }
 
 #note{
-  font-size: 15px;
+  font-size: 12px;
   position: absolute;
   bottom: 0;
-  left: 5%;
+  left: 8%;
   
 }
 
@@ -197,14 +197,14 @@ code {
 h1{
   position: relative;
   top: 180px;
-  left: 49%;
+  left: 52%;
   width: fit-content;
   transform: translate(-50%);
 }
 
 #searchBar{
   position: relative;
-  top: 180px;
+  top: 200px;
   padding: 0;
 
 }
@@ -212,7 +212,7 @@ h1{
 #searchBar .material-icons{
   position: relative;
   font-size: 30px;
-  transform: translate(-270px,10px);
+  transform: translate(-345px,10px);
   cursor: pointer;
 }
 
@@ -284,7 +284,7 @@ h1{
   width: 600px;
   left: 50%;
   transform: translate(-50%);
-  border: black 2px solid;
+  border: darkgray 2px solid;
   border-radius: 5px;
   margin-top: 30px;
   cursor: pointer;
@@ -292,7 +292,7 @@ h1{
 }
 
 .snippet:hover{
-  background-color: darkgray;
+  background-color: lightgray;
 }
 
 .snippet:hover strong{
@@ -306,11 +306,12 @@ h1{
   left: 50%;
   transform: translate(-50%);
   height: fit-content;
-  padding: 80px 40px;
+  padding: 30px 40px;
   min-height: 90vh;
   height: fit-content;
   background-color: white;
   border: lightgray 3px solid;
+  margin-top: 10px;
 }
 
 #detail #like{
@@ -382,7 +383,7 @@ h1{
 #detail p{
   white-space: pre-line;
   word-wrap: break-word;
-  font-size: 20px;
+  font-size: 16px;
   text-align: justify;
 }
 

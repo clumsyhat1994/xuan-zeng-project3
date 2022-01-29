@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import LikeBtn from "./LikeBtn";
 import { useNavigate } from "react-router";
-
+import { useSelector } from "react-redux";
 
 export default function JobDetail() {
 
@@ -38,6 +38,7 @@ export default function JobDetail() {
 
     const buttons = isOwner ? [updateBtn, deleteBtn] : [];
 
+    const isLoggedIn = useSelector(state => state);
     const likeBtn = finishLoad ? <LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} /> : null;
     const applyBtn = finishLoad ? <button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY NOW</a></button> : null;
 
@@ -84,8 +85,11 @@ export default function JobDetail() {
                 <div>
                     <strong>{detail.job_title}</strong>
                 </div>
-                <div><a href={detail.company_website ? detail.company_website : undefined} target="_blank">{detail.company_name}</a></div>
-                <div>{detail.location}</div>
+                <div>
+                    <a href={detail.company_website ? detail.company_website : undefined} target="_blank">{detail.company_name}</a>
+                    &nbsp;&nbsp;{detail.location} {finishLoad ? '(' + detail.workplace_type + ')' : ''}
+                </div>
+                <div>{detail.employment_type}</div>
                 <div><a href={"mailto:" + detail.employer_email}>{detail.employer_email}</a></div>
                 <div>{finishLoad ? 'Posted: ' : ''}{detail.posting_date_formatted}</div>
             </header>
@@ -95,6 +99,4 @@ export default function JobDetail() {
 
         </div>
     );
-    //<button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY</a></button>
-    //<LikeBtn likeState={likeState} jobId={id} setLikeState={setLikeState} />
 }

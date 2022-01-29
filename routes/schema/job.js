@@ -7,7 +7,10 @@ const JobSchema = new Schema({
     description: { type: String, required: true },
     employer_email: { type: String, required: true },
     company_website: String,
+    apply_link: { type: String, required: true },
     posting_date: { type: Date, default: Date.now },
+    workplace_type: { type: String, required: true },
+    employment_type: { type: String, required: true },
     creator: { type: String, required: true }
 }, {
     toObject: { virtuals: true },

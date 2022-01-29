@@ -31,15 +31,14 @@ router.get('/id/:id', function (req, res) {
     JobFunctions.findJobById(req.params.id)
         .then((result) => {
             res.status(200).send(result);
-            //console.log(result)
         })
         .catch(err => res.status(400).send(err));
 })
 
 router.post('/post', authentication, function (req, res) {
     const { job_title, company_name, location, description
-        , employer_email } = req.body;
-    if (!job_title || !company_name || !location || !description || !employer_email) {
+        , employer_email, apply_link } = req.body;
+    if (!job_title || !company_name || !location || !description || !employer_email || !apply_link) {
         return res.status(422).send('Missing data');
     }
     req.body = { ...req.body, creator: req.username }
@@ -50,8 +49,8 @@ router.post('/post', authentication, function (req, res) {
 
 router.post('/update', function (req, res) {
     const { job_title, company_name, location, description
-        , employer_email, company_website, _id } = req.body;
-    if (!job_title || !company_name || !location || !description || !employer_email || !_id) {
+        , employer_email, _id, apply_link } = req.body;
+    if (!job_title || !company_name || !location || !description || !employer_email || !_id || !apply_link) {
         return res.status(422).send('Missing data');
     }
     JobFunctions.updateJob(req.body)

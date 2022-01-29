@@ -23,7 +23,10 @@ function updateJob(job) {
         description: job.description,
         employer_email: job.employer_email,
         company_website: job.company_website,
-        _id: job._id
+        _id: job._id,
+        workplace_type: job.workplace_type,
+        employment_type: job.employment_type,
+        apply_link: job.apply_link
     });
     return JobModel.findByIdAndUpdate(job._id, jobInstance).exec();
 }
