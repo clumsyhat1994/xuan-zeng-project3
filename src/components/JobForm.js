@@ -77,7 +77,6 @@ export default function JobForm() {
                     })
                 }}></input>
 
-
             <label htmlFor="workplace_type">Workplace type *</label>
             <select id='workplace_type' onChange={(e) => { console.log(e.target.value); setWorkPlaceType(e.target.value); }}>
                 <option value='select' hidden>Please select...</option>
@@ -93,8 +92,6 @@ export default function JobForm() {
                 <option value='Internship'>Internship</option>
                 <option value='Volunteer'>Volunteer</option>
             </select>
-
-
 
             <label htmlFor="company_website">Company website</label>
             <input type='text' id="company_website" value={form.company_website} onChange={(e) => {

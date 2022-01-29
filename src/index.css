@@ -38,7 +38,7 @@ code {
   font-size: 12px;
   position: absolute;
   bottom: 0;
-  left: 8%;
+  left: 15%;
   
 }
 
@@ -212,7 +212,7 @@ h1{
 #searchBar .material-icons{
   position: relative;
   font-size: 30px;
-  transform: translate(-345px,10px);
+  transform: translate(-270px,10px);
   cursor: pointer;
 }
 
