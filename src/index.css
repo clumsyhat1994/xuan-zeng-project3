@@ -9,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lightgray;
+  background-color: rgb(243, 242, 239);
   position: relative;
 }
 
@@ -157,7 +157,6 @@ code {
   font-size: inherit;
   margin-right: 10px;
   border: none;
-  background-color: lightgray;
   padding-top: 20px;
   padding-bottom: 20px;
   transform:translateY(-7%);
@@ -212,38 +211,48 @@ h1{
 
 #searchBar{
   position: relative;
-  top: 200px;
+  top: 180px;
   padding: 0;
 
 }
 
-#searchBar input,
-#searchBar button{
+#searchBar .material-icons{
+  position: relative;
+  font-size: 30px;
+  transform: translate(-280px,10px);
+  cursor: pointer;
+}
+
+#searchBar input{
   position: relative;
   border: none;
   outline: none;
   padding: 0;
   left: 50%;
-  transform: translate(-55%);
+  transform: translate(-50%);
   background-color: white;
+ 
   height: 50px;
   font-size: 20px;
+  
 }
 
 #searchBar input{
-  width: 550px;
-  padding-left: 10px;
+  width: 700px;
+  padding-left: 55px;
   padding-right: 10px;
+  box-shadow:2px 2px 2px 2px rgb(12, 12, 12);
 }
 
 
 #searchBar button{
+  height: 55px;
   background-color: black;
   color: white;
   padding-left: 10px;
   padding-right: 10px;
   cursor: pointer;
-  transform: translate(-290%);
+  transform: translate(-330%,1.5px);
 }
 
 #searchBar button:hover{
