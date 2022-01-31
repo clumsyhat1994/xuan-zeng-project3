@@ -34,6 +34,10 @@ code {
   color: crimson;
 }
 
+.hidden{
+  display: none;
+}
+
 #note{
   font-size: 12px;
   position: absolute;
@@ -158,6 +162,42 @@ code {
   border-bottom: black 5px solid;
 }
 
+#navBar #filter{
+  display: inline-flex;
+  cursor: pointer;
+}
+#navBar #navSearchContainer{
+  position: relative;
+  width: 620px;
+  display: flex;
+  justify-content: space-between;
+  transform: translateX(-250px);
+}
+
+#navBar .filterBtn{
+  border: darkgray 2px solid;
+  height: 40px;
+  font-size: 18px;
+  padding: 4px 10px;
+  border-radius: 24px;
+  position: relative;
+  top: 12px;
+  width: fit-content;
+  
+}
+
+#navBar #filter:hover::after{
+  content: 'yet to implement';
+  font-size: 12px;
+  transform: translate(20px,50px);
+  position: absolute;
+}
+
+#navBar ul{
+  position: absolute;
+  list-style-type: none;
+  transform: translateY(50px);
+}
 
 #userIcon{
   z-index: 10;

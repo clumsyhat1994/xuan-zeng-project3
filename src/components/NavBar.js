@@ -3,6 +3,7 @@ import { useNavigate, useLocation, useParams } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 import UserIcon from "./UserIcon";
 import SearchBar from "./SearchBar";
+import Filter from "./Filter";
 import { PromiseProvider } from "mongoose";
 export default function (props) {
     const isLoggedin = useSelector(state => state);
@@ -43,7 +44,12 @@ export default function (props) {
     return (
         <div id="navBar">
             <button id="home" onClick={() => navigate('/')}>HOME</button>
-            {props.search && <SearchBar inNav={true} keyword={keyword} />}
+            <div id="navSearchContainer">
+                {props.search && <SearchBar inNav={true} keyword={keyword} />}
+                {props.search && <Filter type='workplace' />}
+                {props.search && <Filter type='employment-type' />}
+            </div>
+
             <div id="navBtn">
                 {buttons}
             </div>
