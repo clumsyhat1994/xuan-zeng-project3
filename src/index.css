@@ -101,9 +101,6 @@ code {
   font-size: 20px;
 }
 
-
-
-
 #navBar{
   position: relative;
   background-color: white;
@@ -111,11 +108,32 @@ code {
   height: 70px;
   border-bottom: solid lightgray 3px;
   padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
+.navSearchBar#searchBar{
+  position: relative;
+  padding: 0;
+  width: 300px;
+  top: 13px; 
+  left: 0;
+  transform: translate(0);
+}
+
+.navSearchBar#searchBar .material-icons{
+  font-size: 24px;
+  transform: translate(13px,-33px);
+}
+
+.navSearchBar#searchBar input{
+  box-shadow: none;
+  background-color: whitesmoke ;
+  height: 40px;
+  padding-left: 50px;
+}
 
 #navBar button{
-  float: right;
   box-sizing: border-box;
   height: 80px;
   font-size: 18px;
@@ -132,7 +150,6 @@ code {
   font-size: 25px;
   height: 60px;
   margin-left: 20px;
-  float: left;
   font-weight: bold;
   transform:translateY(4%);
 }
@@ -144,7 +161,6 @@ code {
 
 #userIcon{
   z-index: 10;
-  float: right;
   box-sizing: border-box;
   height: 40px;
   font-size: inherit;
@@ -197,7 +213,7 @@ code {
 h1{
   position: relative;
   top: 180px;
-  left: 52%;
+  left: 50%;
   width: fit-content;
   transform: translate(-50%);
 }
@@ -206,13 +222,16 @@ h1{
   position: relative;
   top: 200px;
   padding: 0;
-
+  width: fit-content;
+  left: 50%;
+  transform: translate(-52%);
+  width: 700px;
 }
 
 #searchBar .material-icons{
   position: relative;
   font-size: 30px;
-  transform: translate(-270px,10px);
+  transform: translate(13px,-37px);
   cursor: pointer;
 }
 
@@ -221,21 +240,16 @@ h1{
   border: none;
   outline: none;
   padding: 0;
-  left: 50%;
-  transform: translate(-50%);
   background-color: white;
- 
   height: 50px;
   font-size: 20px;
-  
-}
-
-#searchBar input{
-  width: 700px;
+  width: 100%;
   padding-left: 55px;
   padding-right: 10px;
   box-shadow:2px 2px 2px 2px rgb(12, 12, 12);
 }
+
+
 
 
 #searchBar button{

@@ -10,14 +10,15 @@ export default function SearchResult() {
     const [noResults, setNoResults] = useState(false);
     const [fewResults, setFewResults] = useState(false);
 
-    useEffect(searchJobs, []);
+    useEffect(searchJobs, [keyword]);
 
     function searchJobs() {
         axios.get('/api/job/search/' + keyword)
             .then(response => {
                 setSearchResults(response.data);
-                if (response.data.length === 0) setNoResults(true);
-                if (response.data.length < 5) {
+                (response.data.length === 0) ? setNoResults(true) : setNoResults(false)
+                if (response.data.length >= 5) setFewResults(false);
+                else {
                     setFewResults(true);
                     const result = response.data.map((job) => job.job_title);
                     return axios.get('/api/job/', {
@@ -57,7 +58,7 @@ export default function SearchResult() {
         <div id="searchResults">
             <h3>{noResults ? 'Nothing found for keyword: ' + keyword : ''}</h3>
             {resultList}
-            <h4>{fewResults ? '——————Check out other job postings——————' : ''}</h4>
+            <h4>{fewResults ? '——————Check out other job listings——————' : ''}</h4>
             {otherResultList}
         </div>
     );

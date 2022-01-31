@@ -1,15 +1,16 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate, useLocation, useParams } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 import UserIcon from "./UserIcon";
-export default function () {
+import SearchBar from "./SearchBar";
+import { PromiseProvider } from "mongoose";
+export default function (props) {
     const isLoggedin = useSelector(state => state);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
     const username = localStorage.getItem('username');
-
+    const keyword = useParams().keyword;
 
     const favBtn = (<button id="fav_job" key="fav_job" onClick={() => navigate('/myFav')}>Favorites</button>);
     const postBtn = (<button id="post_job" key="post_job" onClick={() => navigate('/postJob')}>Post job</button>);
@@ -35,14 +36,17 @@ export default function () {
     if (isLoggedin) {
         buttons = <UserIcon />;
     } else {
-        buttons = [logInBtn, favBtn, postBtn];
+        buttons = [postBtn, favBtn, logInBtn];
     }
 
 
     return (
         <div id="navBar">
             <button id="home" onClick={() => navigate('/')}>HOME</button>
-            {buttons}
+            {props.search && <SearchBar inNav={true} keyword={keyword} />}
+            <div id="navBtn">
+                {buttons}
+            </div>
         </div>
     );
 }

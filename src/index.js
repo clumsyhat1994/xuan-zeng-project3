@@ -11,6 +11,7 @@ import SearchResult from './components/SearchResult';
 import JobDetail from './components/JobDetail';
 import JobForm from './components/JobForm';
 import FavList from './components/FavList';
+import Landing from './components/Landing';
 import { isLoggedInReducer } from './redux/isLoggedIn';
 const store = createStore(isLoggedInReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -18,9 +19,13 @@ const store = createStore(isLoggedInReducer, window.__REDUX_DEVTOOLS_EXTENSION__
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <NavBar />
       <Routes>
-        <Route path='/' element={<SearchBar />} />
+        <Route path='/searchResult/:keyword' element={<NavBar search={true} />} />
+        <Route path='/jobDetail/:id' element={<NavBar search={true} />} />
+        <Route path='*' element={<NavBar />} />
+      </Routes>
+      <Routes>
+        <Route path='/' element={<Landing />} />
         <Route path='/login' element={<Authentication mode='login' />} />
         <Route path='/register' element={<Authentication mode='register' />} />
         <Route path='/searchResult/:keyword' element={<SearchResult />} />

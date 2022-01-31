@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-export default function SearchBar() {
+export default function SearchBar(props) {
     const [searchContent, setSearchContent] = useState('');
     const navigate = useNavigate();
     const handleEnter = (e) => {
         if (e.key === 'Enter' && searchContent) {
-            navigate('./searchResult/' + searchContent);
+            navigate('/searchResult/' + searchContent);
         }
     }
+
+    useEffect(() => {
+        if (props.keyword) setSearchContent(props.keyword)
+    }, []);
 
     useEffect(() => {
         document.addEventListener('keydown', handleEnter)
@@ -16,22 +20,15 @@ export default function SearchBar() {
     });
 
     return (
-        <>
-            <h1>SUPER RAINBOW COWBOY JOB BOARD</h1>
-            <div id='searchBar'>
-                <input onChange={(e) => {
-                    setSearchContent(e.target.value);
-                }} />
-                <span className="material-icons" onClick={() => {
-                    if (!searchContent) return;
-                    navigate('./searchResult/' + searchContent);
-                }}>search</span>
-            </div>
+        <div className={props.inNav && 'navSearchBar'} id={'searchBar'}>
+            <input value={searchContent} onChange={(e) => {
+                setSearchContent(e.target.value);
+            }} />
+            <span className="material-icons" onClick={() => {
+                if (!searchContent) return;
+                navigate('/searchResult/' + searchContent);
+            }}>search</span>
+        </div>
 
-            <div id='note'>Dear visitor --  in order to update or delete a job, you have to be its creator.
-                You can try posting a job, or login with username: zengxuan/password: zengxuan to update or delete the job titled 'Sales Engineer'.
-                <br />This web app is just a student project, not a real job board.
-            </div>
-        </>
     );
 }
