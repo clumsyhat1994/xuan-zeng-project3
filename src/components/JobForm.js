@@ -58,7 +58,7 @@ export default function JobForm() {
 
     return (
         <div id="job_form">
-            <div className='error'>{errMsg}</div>
+
 
             <label htmlFor="job_title">Job title *</label>
             <input type='text' id="job_title" value={form.job_title} onChange={(e) => {
@@ -130,6 +130,7 @@ export default function JobForm() {
                     description: e.target.value
                 })
             }}></textarea>
+            <div className='error'>{errMsg}</div>
             <button type='button' onClick={handleSubmit}>SUBMIT</button>
 
         </div>
