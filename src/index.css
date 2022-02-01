@@ -192,7 +192,7 @@ code {
 }
 
 #navBar #filter:hover::after{
-  content: 'yet to implement';
+  content: '';
   font-size: 12px;
   transform: translate(20px,50px);
   position: absolute;
