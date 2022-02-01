@@ -163,15 +163,16 @@ code {
 }
 
 #navBar #filter{
-  display: inline-flex;
-  cursor: pointer;
+  display: flex;
 }
+
 #navBar #navSearchContainer{
   position: relative;
   width: 620px;
   display: flex;
   justify-content: space-between;
   transform: translateX(-250px);
+  
 }
 
 #navBar .filterBtn{
@@ -183,7 +184,11 @@ code {
   position: relative;
   top: 12px;
   width: fit-content;
-  
+  cursor: pointer;
+}
+
+#navBar .filterBtn:hover{
+  background-color: lightgray;
 }
 
 #navBar #filter:hover::after{
@@ -193,10 +198,80 @@ code {
   position: absolute;
 }
 
-#navBar ul{
+#navBar #filter *{
+  font-size: 18px;
+}
+
+#navBar #filter .button{
+  background-color: teal;
+  width:fit-content;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#navBar #filter .filterMenu{
   position: absolute;
+  height: fit-content;
+  background-color: white;
+  padding :20px;
+  width: 200px;
+  border-radius: 15px;
+  box-shadow:0 0 0 1px darkgray, 0 6px 6px darkgray;
+  transform: translateY(60px);
+}
+
+
+
+#navBar #filter ul{
   list-style-type: none;
-  transform: translateY(50px);
+  padding :0;
+  margin: 0;
+}
+
+#navBar #filter ul li input{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/**
+#navBar #filter .checkbox{
+  width: 20px;
+  height:20px;
+  border: black 1px solid;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+#navBar #filter .checkbox.checked{
+  background-color: black;
+}*/
+
+
+#navBar #filter input[type=checkbox]:checked::after{
+  content: '✓';
+  vertical-align: middle;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: teal;
+  color: white;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+
+
+#navBar #filter label{
+  position: relative;
+  display: inline-block;
+  transform: translate(0,-3px);
 }
 
 #userIcon{

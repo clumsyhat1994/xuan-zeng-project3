@@ -12,8 +12,8 @@ import JobDetail from './components/JobDetail';
 import JobForm from './components/JobForm';
 import FavList from './components/FavList';
 import Landing from './components/Landing';
-import { isLoggedInReducer } from './redux/isLoggedIn';
-const store = createStore(isLoggedInReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import reducers from './reducers/reducers';
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
 ReactDOM.render(

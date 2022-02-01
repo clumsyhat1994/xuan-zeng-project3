@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 import { PromiseProvider } from "mongoose";
 export default function (props) {
-    const isLoggedin = useSelector(state => state);
+    const isLoggedin = useSelector(state => state.isLoggedIn);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -46,8 +46,8 @@ export default function (props) {
             <button id="home" onClick={() => navigate('/')}>HOME</button>
             <div id="navSearchContainer">
                 {props.search && <SearchBar inNav={true} keyword={keyword} />}
-                {props.search && <Filter type='workplace' />}
-                {props.search && <Filter type='employment-type' />}
+                {props.search && keyword && <Filter type='workplace' key='workplace' />}
+                {props.search && keyword && <Filter type='employment-type' key='employment-type' />}
             </div>
 
             <div id="navBtn">

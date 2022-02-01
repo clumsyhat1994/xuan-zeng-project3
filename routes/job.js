@@ -16,9 +16,11 @@ router.get('/', function (req, res) {
 })
 
 router.get('/search/:keyword', function (req, res) {
-    JobFunctions.search(req.params.keyword)
+
+    JobFunctions.search(req.params.keyword, req.query)
         .then(jobResponse => res.status(200).send(jobResponse))
         .catch(err => res.status(400).send(err));
+
 })
 
 router.get('/title/:title', function (req, res) {

@@ -11,6 +11,22 @@ function getAllJobsExcept(arr) {
     return JobModel.find({ job_title: { $nin: arr } }).limit(10).exec();
 }
 
+function search(keyword, query) {
+
+    const workplaceFilterString = query.workplaceFilterString;
+    const employmentTypeFilterString = query.employmentTypeFilterString;
+
+    const workplaceFilters = workplaceFilterString && workplaceFilterString.split(',');
+    const employmentTypeFilters = employmentTypeFilterString && employmentTypeFilterString.split(',');
+
+    return JobModel.find({
+        job_title: { $regex: keyword, $options: "i" },
+        workplace_type: { $in: workplaceFilters ? workplaceFilters : ['On-site', 'Hybrid', 'Remote'] },
+        employment_type: { $in: employmentTypeFilters ? employmentTypeFilters : ['Full-time', 'Part-time', 'Internship', 'Volunteer'] }
+    }, 'job_title location company_name').exec();
+}
+
+
 function createJob(job) {
     return JobModel.create(job);
 }
@@ -31,9 +47,7 @@ function updateJob(job) {
     return JobModel.findByIdAndUpdate(job._id, jobInstance).exec();
 }
 
-function search(keyword) {
-    return JobModel.find({ job_title: { $regex: keyword, $options: "i" } }, 'job_title location company_name').exec();
-}
+
 
 function findJobByTitle(title) {
     return JobModel.find({ job_title: title }).exec();
@@ -55,5 +69,6 @@ module.exports = {
     getAllJobs,
     search,
     deleteJob,
-    getAllJobsExcept
+    getAllJobsExcept,
+
 }

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import Snippet from "./Snippet";
 export default function SearchResult() {
     const keyword = useParams().keyword
@@ -9,11 +10,17 @@ export default function SearchResult() {
     const [otherResults, setOtherResults] = useState([]);
     const [noResults, setNoResults] = useState(false);
     const [fewResults, setFewResults] = useState(false);
-
-    useEffect(searchJobs, [keyword]);
+    const filters = useSelector(state => state.filters);
+    useEffect(searchJobs, [keyword, filters]);
 
     function searchJobs() {
-        axios.get('/api/job/search/' + keyword)
+
+        axios.get('/api/job/search/' + keyword, {
+            params: {
+                workplaceFilterString: filters.workplace + '',
+                employmentTypeFilterString: filters.employmentType + ''
+            }
+        })
             .then(response => {
                 setSearchResults(response.data);
                 (response.data.length === 0) ? setNoResults(true) : setNoResults(false)
