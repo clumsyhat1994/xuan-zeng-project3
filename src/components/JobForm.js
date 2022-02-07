@@ -56,6 +56,9 @@ export default function JobForm() {
             .catch(e => console.log(e.response.data));
     }
 
+    function validateEmail() {
+        console.log('validate email');
+    }
     return (
         <div id="job_form">
 
@@ -117,7 +120,7 @@ export default function JobForm() {
                 })
             }}></input>
             <label htmlFor="employer_email">Employer e-mail *</label>
-            <input type='text' id="employer_email" value={form.employer_email} onChange={(e) => {
+            <input type='email' id="employer_email" value={form.employer_email} onBlur={validateEmail} onChange={(e) => {
                 setForm({
                     ...form,
                     employer_email: e.target.value

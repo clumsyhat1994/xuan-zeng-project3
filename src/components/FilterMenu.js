@@ -13,11 +13,9 @@ export default function FilterMenu(props) {
     const setVisible = props.setVisible;
     useEffect(() => {
         if (props.type == 'employment-type') {
-            console.log('hey')
             setEmploymentTypeFilter(filters.employmentType)
         }
         else if (props.type == 'workplace') {
-            console.log(filters.workplace)
             setWorkPlaceFilter(filters.workplace)
         }
     }, [])
