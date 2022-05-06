@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import ReactQuill, { Quill } from "react-quill";
+import "../../node_modules/react-quill/dist/quill.snow.css";
 
 export default function JobForm() {
     const [form, setForm] = useState({});
@@ -8,8 +10,10 @@ export default function JobForm() {
     const [employmentType, setEmploymentType] = useState('select');
     const navigate = useNavigate();
     const id = useParams().id;
+    const step = useParams().step;
     const [errMsg, setErrMsg] = useState('');
     const url = id ? '/api/job/update/' : '/api/job/post'
+
 
     useEffect(fillForm, []);
     useEffect(checkLoggedIn, []);
@@ -33,16 +37,17 @@ export default function JobForm() {
         axios.get('/api/user/isLoggedIn')
             .then(response => console.log('Username logged in: ' + response.data))
             .catch((err) => {
-                navigate('/login', { state: { from: '/postJob' } })
+                navigate('/login', { state: { from: '/postJob/1' } })
                 console.log(err.response.data)
             });
     }
 
     function handleSubmit() {
-        const { job_title, company_name, location, description
-            , employer_email, apply_link, company_website } = form;
-        if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website || workplaceType === 'select' || employmentType === 'select') {
-            return setErrMsg('Missing Data');
+        //const { job_title, company_name, location, description, employer_email, apply_link, company_website } = form;
+        //if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website || workplaceType === 'select' || employmentType === 'select') return setErrMsg('Missing Data');
+        const { description } = form;
+        if (!description) {
+            return setErrMsg('Job description cannot be empty!');
         }
         const postForm = {
             ...form,
@@ -56,13 +61,13 @@ export default function JobForm() {
             .catch(e => console.log(e.response.data));
     }
 
+
     function validateEmail() {
-        console.log('validate email');
+        //validate email
     }
-    return (
+
+    const step1 = (
         <div id="job_form">
-
-
             <label htmlFor="job_title">Job title *</label>
             <input type='text' id="job_title" value={form.job_title} onChange={(e) => {
                 setForm({
@@ -120,22 +125,74 @@ export default function JobForm() {
                 })
             }}></input>
             <label htmlFor="employer_email">Employer e-mail *</label>
+
             <input type='email' id="employer_email" value={form.employer_email} onBlur={validateEmail} onChange={(e) => {
                 setForm({
                     ...form,
                     employer_email: e.target.value
                 })
             }}></input>
-            <label htmlFor="job_description">Job description *</label>
-            <textarea id='job_description' value={form.description} onChange={(e) => {
-                setForm({
-                    ...form,
-                    description: e.target.value
-                })
-            }}></textarea>
+
+
+
+
             <div className='error'>{errMsg}</div>
-            <button type='button' onClick={handleSubmit}>SUBMIT</button>
+            <button type='button' onClick={() => {
+                const { job_title, company_name, location, description
+                    , employer_email, apply_link, company_website } = form;
+                //console.log('missing data')
+                if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website || workplaceType === 'select' || employmentType === 'select') {
+                    return setErrMsg('Missing Data');
+                }
+                setErrMsg('');
+                navigate('/postJob/2')
+
+            }}>NEXT</button>
+
 
         </div>
+
+    );
+
+
+
+    const step2 = (
+        <>
+            <div className='error'>{errMsg}</div>
+            <ReactQuill placeholder='Write job description here...' theme="snow" modules={JobForm.modules} onChange={(value) => {
+                //console.log(value)
+                setForm({
+                    ...form,
+                    description: value
+                })
+            }} />
+            <div id='job_form'>
+                <button type='button' onClick={() => { navigate('/postJob/1') }}>BACK</button>
+                <button type='button' onClick={handleSubmit}>SUBMIT</button>
+            </div>
+        </>)
+
+    return (
+        <>
+            {step == 1 ? step1 : step2}
+        </>
     );
 }
+
+JobForm.modules = {
+    toolbar: [
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image'],
+        ['clean']
+    ],
+}
+/** 
+<label htmlFor="job_description">Job description *</label>
+<textarea id='job_description' value={form.description} onChange={(e) => {
+    setForm({
+        ...form,
+        description: e.target.value
+    })
+}}></textarea>*/

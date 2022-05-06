@@ -30,7 +30,8 @@ ReactDOM.render(
         <Route path='/register' element={<Authentication mode='register' />} />
         <Route path='/searchResult/:keyword' element={<SearchResult />} />
         <Route path='/jobDetail/:id' element={<JobDetail />} />
-        <Route path='/postJob' element={<JobForm />} />
+        <Route path='/postJob/:step' element={<JobForm />} />
+
         <Route path='/updateJob/:id' element={<JobForm />} />
         <Route path='/myFav' element={<FavList />} />
       </Routes>

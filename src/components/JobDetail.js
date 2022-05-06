@@ -4,6 +4,7 @@ import axios from "axios";
 import LikeBtn from "./LikeBtn";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import ReactHtmlParser from 'react-html-parser';
 
 export default function JobDetail() {
 
@@ -75,8 +76,6 @@ export default function JobDetail() {
     useEffect(getDetail, []);
     useEffect(checkFav, []);
 
-
-
     return (
         <div id="detail">
             <h1>{defaultMsg}</h1>
@@ -95,8 +94,7 @@ export default function JobDetail() {
             </header>
             {applyBtn}
             {likeBtn}
-            <p id="description">{detail.description}</p>
-
-        </div>
+            <p dangerouslySetInnerHTML={{ __html: detail.description }} id="description"></p>
+        </div >
     );
 }

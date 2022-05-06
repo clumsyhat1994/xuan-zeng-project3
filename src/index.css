@@ -1,4 +1,6 @@
-html, body, root{
+html,
+body,
+root {
   height: 750px;
 }
 
@@ -18,7 +20,7 @@ code {
     monospace;
 }
 
-#root{
+#root {
   position: relative;
   font-size: 24px;
   height: 100%;
@@ -26,27 +28,27 @@ code {
 
 
 
-*{
+* {
   box-sizing: border-box;
 }
 
-.error{
+.error {
   color: crimson;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-#note{
+#note {
   font-size: 12px;
   position: absolute;
   bottom: 0;
   left: 15%;
-  
+
 }
 
-#authentication{
+#authentication {
   position: absolute;
   left: 50%;
   top: 180px;
@@ -61,18 +63,18 @@ code {
 }
 
 #authentication label,
-#authentication input{
+#authentication input {
   display: block;
   margin-bottom: 10px;
   width: 300px;
   font-size: inherit;
 }
 
-#authentication input{
+#authentication input {
   border-radius: 5px;
 }
 
-#authentication button{
+#authentication button {
   width: 300px;
   font-size: inherit;
   border: lightgray solid 1px;
@@ -83,16 +85,16 @@ code {
   padding: 2%;
 }
 
-#authentication button:hover{
-  transform: translate(0,-5%);
+#authentication button:hover {
+  transform: translate(0, -5%);
   cursor: pointer;
 }
 
-#authentication button:active{
+#authentication button:active {
   transform: translateY(4px);
 }
 
-#authentication .link{
+#authentication .link {
   display: block;
   margin-top: 15px;
   font-size: 15px;
@@ -100,12 +102,12 @@ code {
   cursor: pointer;
 }
 
-#authentication #errMsg{
+#authentication #errMsg {
   color: crimson;
   font-size: 20px;
 }
 
-#navBar{
+#navBar {
   position: relative;
   background-color: white;
   z-index: 10;
@@ -116,28 +118,28 @@ code {
   justify-content: space-between;
 }
 
-.navSearchBar#searchBar{
+.navSearchBar#searchBar {
   position: relative;
   padding: 0;
   width: 300px;
-  top: 13px; 
+  top: 13px;
   left: 0;
   transform: translate(0);
 }
 
-.navSearchBar#searchBar .material-icons{
+.navSearchBar#searchBar .material-icons {
   font-size: 24px;
-  transform: translate(13px,-33px);
+  transform: translate(13px, -33px);
 }
 
-.navSearchBar#searchBar input{
+.navSearchBar#searchBar input {
   box-shadow: none;
-  background-color: whitesmoke ;
+  background-color: whitesmoke;
   height: 40px;
   padding-left: 50px;
 }
 
-#navBar button{
+#navBar button {
   box-sizing: border-box;
   height: 80px;
   font-size: 18px;
@@ -147,35 +149,35 @@ code {
   padding-top: 20px;
   padding-bottom: 20px;
   cursor: pointer;
-  transform:translateY(-5%);
+  transform: translateY(-5%);
 }
 
-#navBar #home{
+#navBar #home {
   font-size: 25px;
   height: 60px;
   margin-left: 20px;
   font-weight: bold;
-  transform:translateY(4%);
+  transform: translateY(4%);
 }
 
-#navBar> button:not(#home):hover{
+#navBar>button:not(#home):hover {
   border-bottom: black 5px solid;
 }
 
-#navBar #filter{
+#navBar #filter {
   display: flex;
 }
 
-#navBar #navSearchContainer{
+#navBar #navSearchContainer {
   position: relative;
   width: 620px;
   display: flex;
   justify-content: space-between;
   transform: translateX(-250px);
-  
+
 }
 
-#navBar .filterBtn{
+#navBar .filterBtn {
   border: darkgray 2px solid;
   height: 40px;
   font-size: 18px;
@@ -187,24 +189,24 @@ code {
   cursor: pointer;
 }
 
-#navBar .filterBtn:hover{
+#navBar .filterBtn:hover {
   background-color: lightgray;
 }
 
-#navBar #filter:hover::after{
+#navBar #filter:hover::after {
   content: '';
   font-size: 12px;
-  transform: translate(20px,50px);
+  transform: translate(20px, 50px);
   position: absolute;
 }
 
-#navBar #filter *{
+#navBar #filter * {
   font-size: 18px;
 }
 
-#navBar #filter .button{
+#navBar #filter .button {
   background-color: teal;
-  width:fit-content;
+  width: fit-content;
   color: white;
   padding: 6px 15px;
   border-radius: 24px;
@@ -214,26 +216,26 @@ code {
   cursor: pointer;
 }
 
-#navBar #filter .filterMenu{
+#navBar #filter .filterMenu {
   position: absolute;
   height: fit-content;
   background-color: white;
-  padding :20px;
+  padding: 20px;
   width: 200px;
   border-radius: 15px;
-  box-shadow:0 0 0 1px darkgray, 0 6px 6px darkgray;
+  box-shadow: 0 0 0 1px darkgray, 0 6px 6px darkgray;
   transform: translateY(60px);
 }
 
 
 
-#navBar #filter ul{
+#navBar #filter ul {
   list-style-type: none;
-  padding :0;
+  padding: 0;
   margin: 0;
 }
 
-#navBar #filter ul li input{
+#navBar #filter ul li input {
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -253,7 +255,7 @@ code {
 }*/
 
 
-#navBar #filter input[type=checkbox]:checked::after{
+#navBar #filter input[type=checkbox]:checked::after {
   content: '✓';
   vertical-align: middle;
   font-size: 12px;
@@ -268,13 +270,13 @@ code {
 
 
 
-#navBar #filter label{
+#navBar #filter label {
   position: relative;
   display: inline-block;
-  transform: translate(0,-3px);
+  transform: translate(0, -3px);
 }
 
-#userIcon{
+#userIcon {
   z-index: 10;
   box-sizing: border-box;
   height: 40px;
@@ -283,25 +285,25 @@ code {
   border: none;
   padding-top: 20px;
   padding-bottom: 20px;
-  transform:translateY(-7%);
+  transform: translateY(-7%);
 }
 
-#userIcon img{
+#userIcon img {
   z-index: 10;
   width: 40px;
   height: 40px;
   cursor: pointer;
 }
 
-#userMenu{
-  
+#userMenu {
+
   position: absolute;
-  
+
   background-color: black;
   display: flex;
   flex-wrap: wrap;
   transform: translateX(-80%);
-  
+
   height: 220px;
   width: 150px;
   padding-left: 10px;
@@ -309,23 +311,23 @@ code {
 }
 
 #userMenu button,
-#userMenu div{
-  
+#userMenu div {
+
   z-index: 10;
   color: white;
   height: fit-content;
   padding: 2px;
 }
 
-#userMenu div{
+#userMenu div {
   font-weight: bold;
 }
 
-#userMenu button:hover{
+#userMenu button:hover {
   border-bottom: white solid 2px;
 }
 
-h1{
+h1 {
   position: relative;
   top: 180px;
   left: 50%;
@@ -333,7 +335,7 @@ h1{
   transform: translate(-50%);
 }
 
-#searchBar{
+#searchBar {
   position: relative;
   top: 200px;
   padding: 0;
@@ -343,14 +345,14 @@ h1{
   width: 700px;
 }
 
-#searchBar .material-icons{
+#searchBar .material-icons {
   position: relative;
   font-size: 30px;
-  transform: translate(13px,-37px);
+  transform: translate(13px, -37px);
   cursor: pointer;
 }
 
-#searchBar input{
+#searchBar input {
   position: relative;
   border: none;
   outline: none;
@@ -361,35 +363,35 @@ h1{
   width: 100%;
   padding-left: 55px;
   padding-right: 10px;
-  box-shadow:2px 2px 2px 2px rgb(12, 12, 12);
+  box-shadow: 2px 2px 2px 2px rgb(12, 12, 12);
 }
 
 
 
 
-#searchBar button{
+#searchBar button {
   height: 55px;
   background-color: black;
   color: white;
   padding-left: 10px;
   padding-right: 10px;
   cursor: pointer;
-  transform: translate(-330%,1.5px);
+  transform: translate(-330%, 1.5px);
 }
 
-#searchBar button:hover{
+#searchBar button:hover {
   background-color: dimgray;
 }
 
 
-#searchBar button:active{
+#searchBar button:active {
   background-color: black;
 }
 
 
 
-#searchResults{
-  
+#searchResults {
+
   position: relative;
   z-index: 0;
   top: 50px;
@@ -397,8 +399,7 @@ h1{
 }
 
 #searchResults h4,
-#searchResults h3
-{
+#searchResults h3 {
   position: relative;
   left: 50%;
   width: fit-content;
@@ -406,7 +407,7 @@ h1{
 }
 
 
-.snippet{
+.snippet {
   pointer-events: initial;
   background-color: white;
   position: relative;
@@ -420,16 +421,16 @@ h1{
   padding: 10px;
 }
 
-.snippet:hover{
+.snippet:hover {
   background-color: lightgray;
 }
 
-.snippet:hover strong{
+.snippet:hover strong {
   border-bottom: solid 3px black;
 }
 
 
-#detail{
+#detail {
   width: 700px;
   position: relative;
   left: 50%;
@@ -443,31 +444,31 @@ h1{
   margin-top: 10px;
 }
 
-#detail #like{
+#detail #like {
   min-width: 62px;
   min-height: 35px;
 }
 
-#detail #apply a{
+#detail #apply a {
   color: white;
   text-decoration: none;
 }
 
 
 
-#detail button{
+#detail button {
   font-size: 16px;
   margin-right: 10px;
   cursor: pointer;
   font-size: 15px;
   padding: 5px 10px;
-  
+
 }
 
 
 
-#detail #like, 
-#detail #apply{
+#detail #like,
+#detail #apply {
   background-color: white;
   border-radius: 25px;
   outline: none;
@@ -478,45 +479,47 @@ h1{
   padding: 10px 17px;
 }
 
-#detail #apply{
+#detail #apply {
   background-color: teal;
   border: teal 2px solid;
 }
 
-#detail #like.liked{
+#detail #like.liked {
   color: teal;
   background-color: PaleTurquoise;
   border: teal 2px solid;
 }
 
-#detail #like.unliked{
+#detail #like.unliked {
   color: black;
   border: teal 2px solid;
 }
 
-#detail #like:hover{
+#detail #like:hover {
   color: white;
   background-color: black;
 }
 
-#detail strong{
+#detail strong {
   font-size: 30px;
 }
 
-#detail div{
+#detail div {
   font-size: 20px;
 }
-#detail a{
-  color: black ;
+
+#detail a {
+  color: black;
 }
-#detail p{
+
+#detail p {
   white-space: pre-line;
   word-wrap: break-word;
   font-size: 16px;
   text-align: justify;
 }
 
-#job_form{
+#job_form {
   position: relative;
   top: 25px;
   width: 30%;
@@ -528,36 +531,36 @@ h1{
 #job_form input,
 #job_form label,
 #job_form select,
-textarea{
+textarea {
   width: 100%;
   display: block;
   font-size: 20px;
-  
+
 }
 
-#job_form label{
+#job_form label {
   text-align: left;
   margin-bottom: 5px;
 }
 
-#job_form select{
+#job_form select {
   padding: 1px 2px;
 }
 
 #job_form select,
-#job_form input{
+#job_form input {
   margin-bottom: 20px;
   border: solid darkgray 2px;
   padding: 8px 10px;
 }
 
-textarea{
+textarea {
   height: 400px;
   resize: none;
   border: solid black 2px;
 }
 
-#job_form button{
+#job_form button {
   font-size: 20px;
   background-color: lightgray;
   padding: 10px;
@@ -565,13 +568,20 @@ textarea{
   cursor: pointer;
 }
 
-#job_form button:hover{
+#job_form button:hover {
   background-color: dimgray;
 }
 
-#job_form button:active{
+#job_form button:active {
   background-color: black;
   color: white;
 }
 
+.ql-editor {
+  min-height: 300px;
+}
 
+.quill {
+  background-color: white;
+  margin: 5%;
+}

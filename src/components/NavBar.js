@@ -14,7 +14,7 @@ export default function (props) {
     const keyword = useParams().keyword;
 
     const favBtn = (<button id="fav_job" key="fav_job" onClick={() => navigate('/myFav')}>Favorites</button>);
-    const postBtn = (<button id="post_job" key="post_job" onClick={() => navigate('/postJob')}>Post job</button>);
+    const postBtn = (<button id="post_job" key="post_job" onClick={() => navigate('/postJob/1')}>Post job</button>);
 
     const from = (location.pathname === '/register' || location.pathname === '/login') ? location.state.from : location.pathname;
 

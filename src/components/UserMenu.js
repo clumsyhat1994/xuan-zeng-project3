@@ -10,7 +10,7 @@ export default function UserMenu(props) {
         <div id="userMenu">
             <div>{username}</div>
             <button id="fav_job" onClick={() => navigate('/myFav')}>Favorites</button>
-            <button id="post_job" onClick={() => navigate('/postJob')}>Post job</button>
+            <button id="post_job" onClick={() => navigate('/postJob/1')}>Post job</button>
             <button type="button" key='logout' onClick={() => {
                 axios.post('/api/user/logout')
                     .then(() => {
