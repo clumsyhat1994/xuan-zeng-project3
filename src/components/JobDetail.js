@@ -6,9 +6,10 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import ReactHtmlParser from 'react-html-parser';
 
-export default function JobDetail() {
+export default function JobDetail(props) {
 
-    const id = useParams().id;
+    console.log("id is: " + props.id)
+    const id = useParams().id ? useParams.id : props.id;
     const [detail, setDetail] = useState({});
     const [defaultMsg, setDefaultMsg] = useState('');
     const [likeState, setLikeState] = useState(null);
@@ -44,6 +45,7 @@ export default function JobDetail() {
     const applyBtn = finishLoad ? <button id="apply"><a href={detail.company_website ? detail.company_website : undefined} target="_blank">APPLY NOW</a></button> : null;
 
     function getDetail() {
+        if (!id) return
         axios.get('/api/job/id/' + id)
             .then(response => {
                 if (!response.data) {
@@ -73,7 +75,8 @@ export default function JobDetail() {
         }
     }
 
-    useEffect(getDetail, []);
+
+    useEffect(getDetail, [props.id]);
     useEffect(checkFav, []);
 
     return (
@@ -98,3 +101,23 @@ export default function JobDetail() {
         </div >
     );
 }
+
+/**
+ *  <h1>{defaultMsg}</h1>
+            {buttons}
+            <header>
+                <div>
+                    <strong>{detail.job_title}</strong>
+                </div>
+                <div>
+                    <a href={detail.company_website ? detail.company_website : undefined} target="_blank">{detail.company_name}</a>
+                    &nbsp;&nbsp;{detail.location} {finishLoad ? '(' + detail.workplace_type + ')' : ''}
+                </div>
+                <div>{detail.employment_type}</div>
+                <div><a href={"mailto:" + detail.employer_email}>{detail.employer_email}</a></div>
+                <div>{finishLoad ? 'Posted: ' : ''}{detail.posting_date_formatted}</div>
+            </header>
+            {applyBtn}
+            {likeBtn}
+            <p dangerouslySetInnerHTML={{ __html: detail.description }} id="description"></p>
+ */

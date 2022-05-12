@@ -391,19 +391,20 @@ h1 {
 
 
 #searchResults {
-
+  vertical-align: top;
+  display: inline-block;
   position: relative;
-  z-index: 0;
-  top: 50px;
+
   padding-bottom: 30px;
+  width: fit-content;
+  left: 4%;
+
 }
 
 #searchResults h4,
 #searchResults h3 {
   position: relative;
-  left: 50%;
   width: fit-content;
-  transform: translate(-50%);
 }
 
 
@@ -412,8 +413,6 @@ h1 {
   background-color: white;
   position: relative;
   width: 600px;
-  left: 50%;
-  transform: translate(-50%);
   border: darkgray 2px solid;
   border-radius: 5px;
   margin-top: 30px;
@@ -431,17 +430,19 @@ h1 {
 
 
 #detail {
+  top: 30px;
+  margin-left: 150px;
+  vertical-align: top;
+  display: inline-block;
   width: 700px;
   position: relative;
-  left: 50%;
-  transform: translate(-50%);
   height: fit-content;
-  padding: 30px 40px;
   min-height: 90vh;
-  height: fit-content;
+  padding: 30px 40px;
+
   background-color: white;
   border: lightgray 3px solid;
-  margin-top: 10px;
+
 }
 
 #detail #like {
