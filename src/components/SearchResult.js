@@ -47,10 +47,15 @@ export default function SearchResult() {
 
             });
     }
+    console.log('display ID: ' + displayID)
 
     useEffect(() => {
         if (searchResults.length !== 0) setDisplayID(searchResults[0]._id)
     }, [searchResults])
+
+    useEffect(() => {
+        if (searchResults.length == 0 && otherResults.length !== 0) setDisplayID(otherResults[0]._id)
+    }, [otherResults])
 
     const resultList = [];
     for (let i in searchResults) {
@@ -63,20 +68,20 @@ export default function SearchResult() {
     const otherResultList = [];
     for (let i in otherResults) {
         otherResultList.push(
-            <Snippet key={'snippet' + i} id={otherResults[i]._id} job_title={otherResults[i].job_title}
+            <Snippet key={'snippet#' + i} id={otherResults[i]._id} job_title={otherResults[i].job_title}
                 company_name={otherResults[i].company_name} location={otherResults[i].location} setDisplay={setDisplayID} />
         );
     }
     return (
         <>
             <div id="searchResults">
-                <h3>{noResults ? 'Nothing found for keyword: ' + keyword : ''}</h3>
+                <div>{noResults ? 'Nothing found for keyword: ' + keyword : ''}</div>
                 {resultList}
                 <h4>{fewResults ? '——————Check out other job listings——————' : ''}</h4>
                 {otherResultList}
             </div>
 
-            {searchResults.length !== 0 && <JobDetail id={displayID == '' ? null : displayID} />}
+            {displayID && <JobDetail id={displayID} />}
         </>
     );
 }

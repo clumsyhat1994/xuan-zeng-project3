@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router";
 export default function LikeBtn(props) {
     const location = useLocation();
     const navigate = useNavigate();
-    /**
-    let text = '';
-    if (props.likeState !== null) {
-        if (props.likeState) text = 'UNLIKE'
-        else text = 'LIKE'
-    } 
-    */
-    const text = props.likestate ? 'UNLIKE' : 'LIKE';
 
-    //const text = props.likeState ? 'UNLIKE' : 'LIKE';
+    const text = props.likeState ? 'UNLIKE' : 'LIKE';
+    console.log('like?: ' + props.likeState)
+    console.log('text" ' + text)
+
+
     function handleClick() {
 
         if (!localStorage.getItem('username')) {

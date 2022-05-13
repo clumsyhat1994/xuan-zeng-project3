@@ -32,9 +32,21 @@ code {
   box-sizing: border-box;
 }
 
-.error {
+.error,
+.errMsg {
   color: crimson;
 }
+
+
+.errMsg {
+  display: none;
+}
+
+input:invalid+.errMsg[ready=true] {
+  display: block;
+}
+
+
 
 .hidden {
   display: none;
@@ -112,7 +124,7 @@ code {
   background-color: white;
   z-index: 10;
   height: 70px;
-  border-bottom: solid lightgray 3px;
+  border-bottom: solid darkgray 3px;
   padding-right: 15px;
   display: flex;
   justify-content: space-between;
@@ -130,6 +142,7 @@ code {
 .navSearchBar#searchBar .material-icons {
   font-size: 24px;
   transform: translate(13px, -33px);
+  left: 3px;
 }
 
 .navSearchBar#searchBar input {
@@ -298,25 +311,25 @@ code {
 #userMenu {
 
   position: absolute;
+  border: black solid 2px;
+  background-color: white;
 
-  background-color: black;
-  display: flex;
-  flex-wrap: wrap;
   transform: translateX(-80%);
-
-  height: 220px;
-  width: 150px;
-  padding-left: 10px;
+  border-radius: 10px;
+  height: fit-content;
+  width: 200px;
+  padding: 15px;
   padding-top: 10px;
 }
 
-#userMenu button,
-#userMenu div {
-
+#userMenu button {
+  display: block;
   z-index: 10;
-  color: white;
+  color: black;
   height: fit-content;
   padding: 2px;
+  margin-top: 15px;
+  box-sizing: content-box;
 }
 
 #userMenu div {
@@ -324,7 +337,7 @@ code {
 }
 
 #userMenu button:hover {
-  border-bottom: white solid 2px;
+  border-bottom: black solid 2px;
 }
 
 h1 {
@@ -395,10 +408,11 @@ h1 {
   display: inline-block;
   position: relative;
 
-  padding-bottom: 30px;
+  padding-bottom: 5px;
   width: fit-content;
-  left: 4%;
-
+  left: 8%;
+  height: calc(100vh - 70px);
+  overflow: auto;
 }
 
 #searchResults h4,
@@ -413,11 +427,15 @@ h1 {
   background-color: white;
   position: relative;
   width: 600px;
-  border: darkgray 2px solid;
+  border: lightgray 2px solid;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 5px;
   cursor: pointer;
   padding: 10px;
+}
+
+.snippet:nth-child(2) {
+  margin-top: 0;
 }
 
 .snippet:hover {
@@ -430,19 +448,20 @@ h1 {
 
 
 #detail {
-  top: 30px;
+
   margin-left: 150px;
   vertical-align: top;
   display: inline-block;
   width: 700px;
   position: relative;
-  height: fit-content;
-  min-height: 90vh;
+
+  height: calc(100vh - 70px);
+  overflow: auto;
   padding: 30px 40px;
 
   background-color: white;
-  border: lightgray 3px solid;
-
+  border-radius: 5px;
+  border: lightgray 2px solid;
 }
 
 #detail #like {
@@ -539,6 +558,10 @@ textarea {
 
 }
 
+#job_form input {
+  border-radius: 5px;
+}
+
 #job_form label {
   text-align: left;
   margin-bottom: 5px;
@@ -563,7 +586,9 @@ textarea {
 
 #job_form button {
   font-size: 20px;
-  background-color: lightgray;
+  background-color: white;
+  border: black 2px solid;
+  border-radius: 5px;
   padding: 10px;
   margin-top: 20px;
   cursor: pointer;

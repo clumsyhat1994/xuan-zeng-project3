@@ -1,10 +1,54 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import FormInput from './FormInput';
 import ReactQuill, { Quill } from "react-quill";
 import "../../node_modules/react-quill/dist/quill.snow.css";
 
 export default function JobForm() {
+    const inputs = [
+        {
+            id: 'job_title',
+            title: 'Job title *',
+            type: 'text',
+            errmsg: 'Please enter the job title',
+            required: true
+        },
+        {
+            id: 'company',
+            title: 'Company *',
+            type: 'text',
+            errmsg: 'Please enter the name of your company',
+            required: true
+        },
+        {
+            id: 'company_website',
+            title: 'Company website',
+            type: 'text',
+            errmsg: 'Please enter a valid website',
+        },
+        {
+            id: 'apply_link',
+            title: 'Apply link *',
+            type: 'text',
+            errmsg: 'Please enter an apply link',
+            required: true
+        },
+        {
+            id: 'Location',
+            title: 'Location *',
+            type: 'text',
+            errmsg: 'Please enter the location of your company',
+            required: true
+        },
+        {
+            id: 'employer_email',
+            title: 'Employer email *',
+            type: 'email',
+            errmsg: 'Please enter a valid email address.',
+            required: true
+        },
+    ]
     const [form, setForm] = useState({});
     const [workplaceType, setWorkPlaceType] = useState('select');
     const [employmentType, setEmploymentType] = useState('select');
@@ -12,6 +56,7 @@ export default function JobForm() {
     const id = useParams().id;
     const step = useParams().step;
     const [errMsg, setErrMsg] = useState('');
+    const [ready, setReady] = useState(false);
     const url = id ? '/api/job/update/' : '/api/job/post'
 
 
@@ -67,6 +112,87 @@ export default function JobForm() {
     }
 
     const step1 = (
+        <div id="job_form">
+
+            {inputs.map((input) => {
+                return <FormInput key={input.id} ready={ready.toString()} {...input} onChange={() => {
+                    console.log('sljfofjwoiefjwnldnvosfjsodfjosidjf')
+                }} />
+            })}
+
+
+            <label htmlFor="workplace_type">Workplace type *</label>
+            <select id='workplace_type' onChange={(e) => { console.log(e.target.value); setWorkPlaceType(e.target.value); }}>
+                <option value='select' hidden>Please select...</option>
+                <option value='On-site'>On-site</option>
+                <option value='Hybrid'>Hybrid</option>
+                <option value='Remote'>Remote</option>
+            </select>
+
+            <label htmlFor="employment_type" onChange={(e) => { setEmploymentType(e.target.value) }}>Employment type *</label>
+            <select id='employment_type' onChange={(e) => { setEmploymentType(e.target.value) }}>
+                <option value='select' hidden>Please select...</option>
+                <option value='Full-time'>Full-time</option>
+                <option value='Part-time'>Part-time</option>
+                <option value='Internship'>Internship</option>
+                <option value='Volunteer'>Volunteer</option>
+            </select>
+
+            <button type='button' onClick={() => {
+                const { job_title, company_name, location, description
+                    , employer_email, apply_link, company_website } = form;
+                if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website || workplaceType === 'select' || employmentType === 'select') {
+                    return setReady(true);
+                    //return setErrMsg('Missing Data');
+                }
+                navigate('/postJob/2')
+
+            }}>NEXT</button>
+
+
+        </div>
+
+    );
+
+
+
+    const step2 = (
+        <>
+            <div className='error'>{errMsg}</div>
+            <ReactQuill placeholder='Write job description here...' theme="snow" modules={JobForm.modules} onChange={(value) => {
+                //console.log(value)
+                setForm({
+                    ...form,
+                    description: value
+                })
+            }} />
+            <div id='job_form'>
+                <button type='button' onClick={() => { navigate('/postJob/1') }}>BACK</button>
+                <button type='button' onClick={handleSubmit}>SUBMIT</button>
+            </div>
+        </>)
+
+    return (
+        <>
+            {step == 1 ? step1 : step2}
+        </>
+    );
+}
+
+JobForm.modules = {
+    toolbar: [
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image'],
+        ['clean']
+    ],
+}
+
+
+
+/**
+ *     const step1 = (
         <div id="job_form">
             <label htmlFor="job_title">Job title *</label>
             <input type='text' id="job_title" value={form.job_title} onChange={(e) => {
@@ -154,45 +280,4 @@ export default function JobForm() {
 
     );
 
-
-
-    const step2 = (
-        <>
-            <div className='error'>{errMsg}</div>
-            <ReactQuill placeholder='Write job description here...' theme="snow" modules={JobForm.modules} onChange={(value) => {
-                //console.log(value)
-                setForm({
-                    ...form,
-                    description: value
-                })
-            }} />
-            <div id='job_form'>
-                <button type='button' onClick={() => { navigate('/postJob/1') }}>BACK</button>
-                <button type='button' onClick={handleSubmit}>SUBMIT</button>
-            </div>
-        </>)
-
-    return (
-        <>
-            {step == 1 ? step1 : step2}
-        </>
-    );
-}
-
-JobForm.modules = {
-    toolbar: [
-        [{ 'header': [1, 2, false] }],
-        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-        ['link', 'image'],
-        ['clean']
-    ],
-}
-/** 
-<label htmlFor="job_description">Job description *</label>
-<textarea id='job_description' value={form.description} onChange={(e) => {
-    setForm({
-        ...form,
-        description: e.target.value
-    })
-}}></textarea>*/
+ */

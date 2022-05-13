@@ -8,14 +8,18 @@ import ReactHtmlParser from 'react-html-parser';
 
 export default function JobDetail(props) {
 
-    console.log("id is: " + props.id)
+    //console.log("id is: " + props.id)
     const id = useParams().id ? useParams.id : props.id;
+
     const [detail, setDetail] = useState({});
     const [defaultMsg, setDefaultMsg] = useState('');
     const [likeState, setLikeState] = useState(null);
     const [isOwner, setIsOwner] = useState(false);
     const [finishLoad, setFinishLoad] = useState(false);
     const navigate = useNavigate();
+
+    //console.log('like?: ' + likeState)
+
     const updateBtn = (<button id="update" key='update' onClick={
         () => {
             navigate('/updateJob/' + id);
@@ -53,7 +57,7 @@ export default function JobDetail(props) {
                 }
                 setDetail(response.data);
                 setBtns(response.data.creator);
-                setFinishLoad(true);
+                //setFinishLoad(true);
             })
             .catch(err => {
                 console.log(err)
@@ -63,6 +67,7 @@ export default function JobDetail(props) {
     function checkFav() {
         let username = localStorage.getItem('username')
         if (username) {
+            if (!id) return
             axios.get('/api/user/name/' + username)
                 .then((res) => {
                     if (res.data.favorites.includes(id)) {
@@ -70,6 +75,7 @@ export default function JobDetail(props) {
                     } else {
                         setLikeState(false);
                     }
+                    setFinishLoad(true);
                 })
                 .catch();
         }
@@ -77,7 +83,7 @@ export default function JobDetail(props) {
 
 
     useEffect(getDetail, [props.id]);
-    useEffect(checkFav, []);
+    useEffect(checkFav, [props.id]);
 
     return (
         <div id="detail">
