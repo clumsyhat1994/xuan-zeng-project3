@@ -111,13 +111,15 @@ export default function JobForm() {
         //validate email
     }
 
+    function onChange(e) {
+        setForm({ ...form, [e.target.id]: e.target.value })
+    }
+
     const step1 = (
         <div id="job_form">
 
             {inputs.map((input) => {
-                return <FormInput key={input.id} ready={ready.toString()} {...input} onChange={() => {
-                    console.log('sljfofjwoiefjwnldnvosfjsodfjosidjf')
-                }} />
+                return <FormInput key={input.id} ready={ready} {...input} onChange={onChange} />
             })}
 
 
@@ -142,8 +144,8 @@ export default function JobForm() {
                 const { job_title, company_name, location, description
                     , employer_email, apply_link, company_website } = form;
                 if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website || workplaceType === 'select' || employmentType === 'select') {
+                    console.log(form)
                     return setReady(true);
-                    //return setErrMsg('Missing Data');
                 }
                 navigate('/postJob/2')
 
@@ -160,7 +162,6 @@ export default function JobForm() {
         <>
             <div className='error'>{errMsg}</div>
             <ReactQuill placeholder='Write job description here...' theme="snow" modules={JobForm.modules} onChange={(value) => {
-                //console.log(value)
                 setForm({
                     ...form,
                     description: value

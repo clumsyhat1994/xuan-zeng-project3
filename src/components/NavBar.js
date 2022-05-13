@@ -18,10 +18,11 @@ export default function (props) {
 
     const from = (location.pathname === '/register' || location.pathname === '/login') ? location.state.from : location.pathname;
 
+
     const logInBtn =
         (<button type="button" key='login' onClick={() => {
             navigate('/login', { state: { from: from } });
-            window.location.reload();
+            //window.location.reload();
         }}>Log in</button>);
 
     function checkLogIn() {
