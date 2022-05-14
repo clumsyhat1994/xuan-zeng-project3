@@ -9,8 +9,9 @@ import ReactHtmlParser from 'react-html-parser';
 export default function JobDetail(props) {
 
     //console.log("id is: " + props.id)
-    const id = useParams().id ? useParams.id : props.id;
 
+    const id = useParams().id || props.id;
+    console.log('id: ' + id)
     const [detail, setDetail] = useState({});
     const [defaultMsg, setDefaultMsg] = useState('');
     const [likeState, setLikeState] = useState(null);

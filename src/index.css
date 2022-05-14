@@ -42,7 +42,7 @@ code {
   display: none;
 }
 
-input:invalid+.errMsg[ready=true] {
+input:invalid+.errMsg[ready='1'] {
   display: block;
 }
 

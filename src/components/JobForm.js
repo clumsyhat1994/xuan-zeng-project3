@@ -15,7 +15,7 @@ export default function JobForm() {
             required: true
         },
         {
-            id: 'company',
+            id: 'company_name',
             title: 'Company *',
             type: 'text',
             errmsg: 'Please enter the name of your company',
@@ -35,7 +35,7 @@ export default function JobForm() {
             required: true
         },
         {
-            id: 'Location',
+            id: 'location',
             title: 'Location *',
             type: 'text',
             errmsg: 'Please enter the location of your company',
@@ -49,14 +49,19 @@ export default function JobForm() {
             required: true
         },
     ]
-    const [form, setForm] = useState({});
+    const initialForm = {
+        location: '',
+        job_title: ''
+    }
+    //const [form, setForm] = useState('');
+    const [form, setForm] = useState(initialForm);
     const [workplaceType, setWorkPlaceType] = useState('select');
     const [employmentType, setEmploymentType] = useState('select');
     const navigate = useNavigate();
     const id = useParams().id;
     const step = useParams().step;
     const [errMsg, setErrMsg] = useState('');
-    const [ready, setReady] = useState(false);
+    const [ready, setReady] = useState(0);
     const url = id ? '/api/job/update/' : '/api/job/post'
 
 
@@ -112,14 +117,17 @@ export default function JobForm() {
     }
 
     function onChange(e) {
-        setForm({ ...form, [e.target.id]: e.target.value })
+        const newForm = { ...form }
+        newForm[e.target.id] = e.target.value
+        setForm(newForm)
+        //setForm({ ...form, [e.target.id]: e.target.value })
     }
 
     const step1 = (
         <div id="job_form">
 
             {inputs.map((input) => {
-                return <FormInput key={input.id} ready={ready} {...input} onChange={onChange} />
+                return <FormInput key={input.id} ready={ready} {...input} value={form[input.id]} onChange={onChange} />
             })}
 
 
@@ -142,10 +150,10 @@ export default function JobForm() {
 
             <button type='button' onClick={() => {
                 const { job_title, company_name, location, description
-                    , employer_email, apply_link, company_website } = form;
-                if (!job_title || !company_name || !location || !description || !employer_email || !apply_link || !company_website || workplaceType === 'select' || employmentType === 'select') {
+                    , employer_email, apply_link } = form;
+                if (!job_title || !company_name || !location || !employer_email || !apply_link || workplaceType === 'select' || employmentType === 'select') {
                     console.log(form)
-                    return setReady(true);
+                    return setReady(1);
                 }
                 navigate('/postJob/2')
 
@@ -167,6 +175,7 @@ export default function JobForm() {
                     description: value
                 })
             }} />
+            <div>{errMsg}</div>
             <div id='job_form'>
                 <button type='button' onClick={() => { navigate('/postJob/1') }}>BACK</button>
                 <button type='button' onClick={handleSubmit}>SUBMIT</button>
